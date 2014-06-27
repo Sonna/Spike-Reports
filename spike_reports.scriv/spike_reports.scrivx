@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ScrivenerProject Version="1.0" Creator="SCRMAC-2.5-25239" Modified="2014-06-27 19:45:48 +1000">
+<ScrivenerProject Version="1.0" Creator="SCRMAC-2.5-25239" Modified="2014-06-27 19:51:03 +1000">
     <Binder>
         <BinderItem ID="0" Type="DraftFolder" Created="2014-06-26 11:41:27 +1000" Modified="2014-06-26 11:41:27 +1000">
             <Title>Draft</Title>
@@ -7,14 +7,14 @@
                 <IncludeInCompile>Yes</IncludeInCompile>
             </MetaData>
             <Children>
-                <BinderItem ID="3" Type="Text" Created="2014-06-26 11:41:27 +1000" Modified="2014-06-27 13:34:58 +1000">
-                    <Title>PlainText</Title>
+                <BinderItem ID="3" Type="Text" Created="2014-06-26 11:41:27 +1000" Modified="2014-06-27 19:50:57 +1000">
+                    <Title>Spike</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>0,0</TextSelection>
+                        <TextSelection>0,519</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem ID="4" Type="Folder" Created="2014-06-27 19:16:47 +1000" Modified="2014-06-27 19:16:55 +1000">
@@ -27,7 +27,7 @@
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
                     <CorkboardAndOutliner>
-                        <SelectedSubdocumentIDs>11</SelectedSubdocumentIDs>
+                        <SelectedSubdocumentIDs></SelectedSubdocumentIDs>
                         <OutlinerExpandedState></OutlinerExpandedState>
                         <CorkboardSettings>
                             <FreeformMode>No</FreeformMode>
@@ -201,7 +201,7 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2014-06-26 11:41:26 +1000" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Midnight" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="37" Characters="189" Date="2014-06-27 19:30:22 +1000"></PreviousSession>
+        <PreviousSession Words="140" Characters="799" Date="2014-06-27 19:30:22 +1000"></PreviousSession>
     </ProjectTargets>
     <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>
