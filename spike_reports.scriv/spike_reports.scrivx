@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ScrivenerProject Version="1.0" Creator="SCRMAC-2.5-25239" Modified="2014-06-27 19:41:21 +1000">
+<ScrivenerProject Version="1.0" Creator="SCRMAC-2.5-25239" Modified="2014-06-27 19:45:48 +1000">
     <Binder>
         <BinderItem ID="0" Type="DraftFolder" Created="2014-06-26 11:41:27 +1000" Modified="2014-06-26 11:41:27 +1000">
             <Title>Draft</Title>
@@ -26,8 +26,19 @@
                     <TextSettings>
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
+                    <CorkboardAndOutliner>
+                        <SelectedSubdocumentIDs>11</SelectedSubdocumentIDs>
+                        <OutlinerExpandedState></OutlinerExpandedState>
+                        <CorkboardSettings>
+                            <FreeformMode>No</FreeformMode>
+                            <FreeformCorkboardDocuments>
+                                <IndexCardBinderID Position="0.106667,0.043333" TimeStamp="2014-06-27 19:45:12 +1000">6</IndexCardBinderID>
+                                <IndexCardBinderID Position="1.166667,0.053333" TimeStamp="2014-06-27 19:45:12 +1000">11</IndexCardBinderID>
+                            </FreeformCorkboardDocuments>
+                        </CorkboardSettings>
+                    </CorkboardAndOutliner>
                     <Children>
-                        <BinderItem ID="6" Type="Text" Created="2014-06-27 19:17:37 +1000" Modified="2014-06-27 19:31:38 +1000">
+                        <BinderItem ID="6" Type="Text" Created="2014-06-27 19:17:37 +1000" Modified="2014-06-27 19:45:02 +1000">
                             <Title>Spike Plan</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
@@ -69,8 +80,8 @@
                                 </BinderItem>
                             </Children>
                         </BinderItem>
-                        <BinderItem ID="11" Type="Text" Created="2014-06-27 19:38:23 +1000" Modified="2014-06-27 19:38:54 +1000">
-                            <Title>Spike Outcomes</Title>
+                        <BinderItem ID="11" Type="Text" Created="2014-06-27 19:38:23 +1000" Modified="2014-06-27 19:45:43 +1000">
+                            <Title>Spike Outcome</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
@@ -136,7 +147,7 @@
                                         <NotesTextSelection>0,0</NotesTextSelection>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>0,0</TextSelection>
+                                        <TextSelection>238,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
