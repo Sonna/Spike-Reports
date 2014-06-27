@@ -1,0 +1,2677 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SearchIndexes Version="1.0">
+    <Documents>
+        <Document ID="60">
+            <Title>Hierarchical Network Model</Title>
+            <Text>- When building a LAN that satisfies the needs of a small or medium-sized
+  business, your plan is more likely to be successful if a hierarchical design
+  model is used:
+
+  - This involves dividing the network into discrete layers.
+
+  - Each layer provides specific functions that define its role within the
+    overall network.
+
+  - By separating the various functions that exist on a network, the network
+    design becomes modular, which facilitates scalability and performance.
+
+- The typical hierarchical design model is broken up in to three layers:
+  - access
+  - distribution
+  - core
+
+&lt;[Diagram example of Hierachical Network Model](Lecture 9 - slide 4)&gt;
+
+Core idea of Layers:
+- (Top)    Core
+- (Middle) Distribution
+- (Bottom) Access
+
+
+~~Needs more work on notes here!!!~~</Text>
+        </Document>
+        <Document ID="61">
+            <Title>Q8 - Virtual Trunking Protocol -</Title>
+            <Text>_Understand Process - 13 marks_
+
+** Trunking **
+- The concept of trunking began with the telephone industry.
+
+- Multiple calls were moved between customers and central offices or between the
+  offices themselves over a single physical connection.</Text>
+        </Document>
+        <Document ID="54">
+            <Title>Least Cost Paths to the Root Bridge</Title>
+            <Text>When the root bridge has been designated for the spanning-tree instance, the STA
+starts the process of determining the best paths to the root bridge from all
+destinations in the broadcast domain.
+
+The path information is determined by summing up the individual port costs along
+the path from the destination to the root bridge.
+
+| Link Speed | Cost |
+| ---------- | ---- |
+|  10 Gbp    |   2  |
+|   1 Gbps   |   4  |
+| 100 Mbps   |  19  |
+|  10 Mbps   | 100  |</Text>
+        </Document>
+        <Document ID="47">
+            <Title>Layer 2 Loops (Broadcast Storm)</Title>
+            <Text>When multiple paths exist between two devices on the switched network and STP
+(Spanning Tree Protocol) has been disabled, a Layer 2 loop can occur.
+
+- Ethernet frames do not have a time to live.
+
+  If there is a loop, they will continue to be forwarded from switch to switch
+  endlessly or until a link is disrupted and breaks the loop.
+
+- Broadcast frames are forwarded out all switch ports, except the originating
+  port. This ensures that all devices in the broadcast domain are able to
+  receive the frame.
+
+  If there is more than one path for the frame to be forwarded out, it can
+  result in an endless loop, a Broadcast Storm.</Text>
+        </Document>
+        <Document ID="62">
+            <Title>VLAN Trunking</Title>
+            <Text>In network switching technologies, a trunk:
+- carries traffic of multiple VLANs over the singular physical link
+
+- is a point-to-point connection between a switch interface and an interface of
+  another device, e.g. a switch or a router</Text>
+        </Document>
+        <Document ID="55">
+            <Title>Port Roles</Title>
+            <Text>Ports are configured with distinct roles:
+
+- **Root port** - sends and receives traffic
+  - Elect one root-port for each non-root bridge
+  - Is port with lowest cost path from the non-root bridge to the root bridge
+    (lowest next hop’s bridge ID and then next hop’s port ID are tiebreakers)
+
+- **Designated ports** – sends and receives traffic
+  - One designated port per each segment (area between two bridges)
+  - Is the least-cost path to the root bridge (the bridge ID acts as tiebreaker)
+  - On the **root bridge**, all ports **act** as **designated ports**
+
+- **Non-designated ports** – blocking state
+  - Non-designated port on each segment is blocked to eliminate loop.</Text>
+        </Document>
+        <Document ID="48">
+            <Title>Broadcast Storm - Why a Problem?</Title>
+            <Text>- Use of bandwidth disrupts normal traffic flow
+
+- All devices must process (Use CPU cycles) the broadcasts
+
+- User PCs and servers can lock up trying to process all the broadcast frames
+
+- MAC address Table Instability – Which port to forward unicast frame ?</Text>
+        </Document>
+        <Document ID="70">
+            <Title>Physical and Logical interfaces</Title>
+            <Text>- Subinterfaces on a router can be used to divide a single physical interface
+  into multiple logical interfaces.
+
+- Each physical interface can have up to 65,535 logical interfaces.
+
+&lt;some diagrams...&gt;
+********************************************************************************</Text>
+        </Document>
+        <Document ID="63">
+            <Title>Frame Tagging</Title>
+            <Text>- Remember that switches are Layer 2 devices.
+  - Only use the Ethernet frame header information.
+  - Frame header does not contain information about VLAN membership.
+
+- VLAN membership (i.e. VLAN ID or VLAN Number) must be identified for each
+  frame that is transferred over the trunk.
+
+- Different tagging schemes exist. The two most common tagging schemes for
+  Ethernet segments are:
+  - ISL (Inter-Switch Link) – A Cisco proprietary protocol
+  - 802.1Q – An IEEE standard
+
+- Each protocol defines how VLAN IDs get incorporated into an Ethernet frame.
+
+- VLAN ID can be in a normal range, 1-1005, or an extended range, 1006-4094.</Text>
+        </Document>
+        <Document ID="56">
+            <Title>Port States</Title>
+            <Text>Each switch port transitions through **5 possible port states** and **3 BPDU
+timers.**
+
+The spanning tree is determined immediately after a switch is finished booting
+up. If a switch port were to transition directly from the blocking to the
+forwarding state, the port could temporarily create a data loop if the switch
+was not aware of all topology information at the time.
+
+1. Blocking - The port is a non-designated port and does not participate in
+   frame forwarding.
+   - The port receives BPDU frames to determine the location and root ID of the
+     root bridge switch and what port roles each switch port should assume in
+     the final active STP topology.
+
+2. Listening - STP has determined that the port can participate in frame
+   forwarding according to the BPDU frames that the switch has received thus
+   far.
+   - At this point, the switch port is not only receiving BPDU frames, it is
+     also transmitting its own BPDU frames and informing adjacent switches that
+     the switch port is preparing to participate in the active topology.
+
+3. Learning - The port prepares to participate in frame forwarding and begins
+   to populate the MAC address table.
+
+4. Forwarding - The port is considered part of the active topology and forwards
+   frames and also sends and receives BPDU frames.
+
+5. Disabled - The Layer 2 port does not participate in STP and does not forward
+   frames.
+   - The disabled state is set when the switch port is administratively
+     disabled.</Text>
+        </Document>
+        <Document ID="49">
+            <Title>Duplicate Unicast Frames</Title>
+            <Text>Unicast frames sent onto a looped network can result in duplicate frames
+arriving at the destination device.
+
+Most upper layer protocols are not designed to recognize or cope with
+duplicate transmissions.
+- In general, protocols (TCP) that make use of a sequence-numbering mechanism
+  assume that the transmission has failed and that the sequence number has
+  recycled for another communication session.
+
+Fortunately, switches with STP enabled are capable of detecting loops on a
+network.
+  - STP eliminates these loop issues.</Text>
+        </Document>
+        <Document ID="71">
+            <Title>VLAN Trunking Protocol (VTP)</Title>
+            <Text>** VLAN info box **
+
+&gt; - VLAN configuration consistency across the network
+&gt; - VLANs are trunked over mixed media. For example, an Ethernet VLAN is mapped
+&gt;   to high-speed ATM LANE or FDDI VLAN
+&gt; - Accurate tracking and monitorin of VLANs
+&gt; - "Plug-and-play" configuration when adding new VLANs
+
+- VTP is a Cisco proprietary protocol that allows VLAN configuration to be
+  consistently maintained across a common administrative domain.
+
+- VTP minimizes the possible configuration inconsistencies that arise when
+  changes are made.
+
+- VTP reduces the complexity of managing and monitoring VLAN networks, allowing
+  VLAN changes on one switch to be propagated to other switches via VTP.
+
+- On most Cisco switches, VTP is running and has certain defaults already
+  configured.
+
+- VTP is not necessary in order to configure VLANs or Trunking on Cisco
+  Switches.</Text>
+        </Document>
+        <Document ID="64">
+            <Title>ISL - Frame Tagging</Title>
+            <Text>&gt; [&lt;Diagram of tagged frame packet&gt;](Lecture 8 - slide 6)
+&gt;
+&gt; Standard NIC cards and networking devices don’t understand this giant frame
+&gt; (up to 1548 bytes long). A Cisco switch must remove this encapsulation before
+&gt; sending the frame out on an access link.
+&gt;
+
+- An Ethernet frame is encapsulated with a header which includes VLAN ID
+
+- It adds overhead to the packet as a 26-byte header containing a 15-bit VLAN
+  ID.
+
+- In addition, a 4-byte cyclic redundancy check (CRC) is appended to the end of
+  each frame.
+
+- This CRC is in addition to any frame checking that an Ethernet frame requires.</Text>
+        </Document>
+        <Document ID="57">
+            <Title>Putting It All Together</Title>
+            <Text>**STP Convergence:**
+- Convergence is the time it takes for the network to:
+  - Determine which switch is going to assume the role of the root bridge.
+  - Set switch ports to their final spanning-tree port roles where all potential
+    loops are eliminated.
+
+**Three Steps:**
+- Elect a **Root bridge**.
+- Elect the **Root ports**.
+- Elect the **Designated and Non-designated** ports.</Text>
+        </Document>
+        <Document ID="72">
+            <Title>VTP Componenets</Title>
+            <Text>- VTP Domain:
+  - Consists of one or more interconnected switches.
+  - All switches in a domain share VLAN configuration details using VTP
+    advertisements.
+  - Router or Layer 3 switch defines the boundary of domain eg VTP Domains A
+    and B.
+
+- VTP Modes:
+  - Three different modes: Server, Client, Transparent
+
+- VTP Server:
+  - VTP servers advertise the VTP VLAN information to other switches in the same
+    VTP domain.
+  - The server is where VLANs can be created, deleted, or renamed for the
+    domain.
+
+- VTP Client:
+  - VTP clients Forward advertisements to other clients.
+  - You cannot create, change, or delete VLANs.
+  - You must configure VTP Client mode.
+
+- VTP Transparent mode:
+  - Forward VTP advertisements but ignore information contained in the message.
+
+  - A transparent switch will not modify its database when updates are received,
+    nor will the switch send out an update indicating a change in its own VLAN
+    status.
+
+  - VLANs that are created are LOCAL to that switch only
+
+  - Except for forwarding VTP advertisements, VTP is disabled on a transparent
+    switch.</Text>
+        </Document>
+        <Document ID="65">
+            <Title>IEEE 802.1Q – Frame Tagging</Title>
+            <Text>&gt; NIC cards and networking devices can accept this “baby giant” frame (up to
+&gt; 1522 bytes). However, a Cisco switch must remove this encapsulation before
+&gt; sending the frame out on an access link. Must recalculate CRC.
+&gt;
+&gt; [&lt;Diagram of tagged frame packet&gt;](Lecture 8 - slide 7)
+&gt;
+
+- Significantly less overhead than the ISL
+
+- As opposed to the 30 bytes added by ISL, 802.1Q inserts only an additional 4
+  bytes into the Ethernet frame</Text>
+        </Document>
+        <Document ID="58">
+            <Title>Advance Topics</Title>
+            <Text>Lecture 10 - slides 27 _and onwards_</Text>
+        </Document>
+        <Document ID="73">
+            <Title>VTP Implementation</Title>
+            <Text>&gt; ** Configuration Revision Number **
+&gt; Each advertisement starts as configuration revision number 0. As changes are
+&gt; made, the configuration revision number is increased incrementally by one, or
+&gt; n + 1. The revision number continues to increment until it reaches
+&gt; 2,147,483,648. When it reaches that point, the counter will reset back to
+&gt; zero.
+
+
+** There are three types of VTP messages: **
+
+- Advertisement requests
+  - clients request VLAN information
+  - and the server responds with summary and subset advertisements
+
+- Summary advertisements
+  - By default, server and client Catalyst switches issue summary advertisements
+    every five minutes.
+  - Servers inform neighbour switches what they believe to be the current VTP
+    revision number.
+
+- Subset advertisements
+  - Subset advertisements contain detailed information about VLANs such as VTP
+    version type, domain name and related fields, and the configuration revision
+    number.</Text>
+        </Document>
+        <Document ID="66">
+            <Title>ISL vs. 802.1q Frame Tagging</Title>
+            <Text>| ISL | IEEE 802.1q |
+| :-- | :---------- |
+| Cisco proprietary protocol | IEEE standard |
+| Is supported only on certain Cisco devices | Allow trunks between different vendors’ devices |
+| Encapsulate the original Ethernet frame – the original frame is placed in between the header and trailer. | Modify the original frame – a tag is inserted into the middle of the original frame. |
+| More overhead (30 bytes addition) | Less overhead (4 bytes addition) |
+| Untagged frames received from an ISL trunk port are dropped. | Support both tagged and untagged traffic (via native VLAN). |
+| ^ | ^ |
+| May still be used in legacy networks | Today use |</Text>
+        </Document>
+        <Document ID="59">
+            <Title>Q7 - Network Design -</Title>
+            <Text>_Mixed Short Answer + Calculation - 7 marks_
+
+** Summary **
+
+- Describe Hierarchical Network Model:
+  - Layers – Access, Distribution, Core
+  - Benefits
+  - Design principles (Rules of Thumb)
+
+- Describe a Converged Network
+
+- Considerations in Selecting Network Switches</Text>
+        </Document>
+        <Document ID="74">
+            <Title>VTP Pruning</Title>
+            <Text>- Prevents unnecessary flooding of broadcast information from one VLAN across
+  all trunks in a VTP domain.
+
+- Permits switches to negotiate which VLANs are assigned to ports at the other
+  end of a trunk
+  and prune the VLANs that are not assigned to ports on the remote switch.
+
+- Disabled by default.
+
+- Configured using the vtp pruning global configuration command.</Text>
+        </Document>
+        <Document ID="67">
+            <Title>VLANs and Trunking</Title>
+            <Text>- It is important to understand that a trunk link does not belong to a specific
+  VLAN.
+
+- The responsibility of a trunk link is to act as a conduit for VLANs between
+  switches and routers (or switches and switches).</Text>
+        </Document>
+        <Document ID="3">
+            <Title>PlainText</Title>
+            <Text>This is a test of using plain text in Scrivener.
+This is a sentence.
+
+This is a new paragraph.
+</Text>
+        </Document>
+        <Document ID="75">
+            <Title>Adding a switch to an existing VTP domain</Title>
+            <Text>&gt; - Clear the configuration
+&gt; - Cleat the VTP file
+&gt; - Power cycle the switch
+&gt; - Configure VTP mode and domain
+&gt; - Password protect the domain
+
+- Use caution when inserting a new switch into an existing domain.
+
+- In order to prepare a switch to enter an existing VTP domain, perform the
+  following steps. From the privileged mode:  
+  - delete vlan.dat
+  - erase startup-config
+  - power cycle the switch.
+
+- This will avoid potential problems resulting from residual VLAN configurations
+  or adding a switch with a higher VTP configuration revision number that could
+  result in the propagation of incorrect VLAN information.</Text>
+        </Document>
+        <Document ID="4">
+            <Title>new text file</Title>
+            <Text>This is a plain text file?</Text>
+        </Document>
+        <Document ID="68">
+            <Title>Dynamic Trunking Protocol (DTP)</Title>
+            <Text>** Cisco proprietary protocol: **
+- Negotiate status of trunk ports AND trunk encapsulation of trunk ports.
+
+- Automatically enabled on a switch port when certain trunking modes are
+  configured on the switch port.
+
+- DTP manages trunk negotiation only if the port on the other switch is
+  configured in a trunk mode that supports DTP.
+
+- DTP supports both ISL and 802.1Q trunks.
+
+- Trunk (ON):  ``` switchport mode trunk ```
+  - Switch port sends DTP advertisements to the remote port that it is changing
+    to the trunking state. Regardless of response from remote port it changes to
+    the trunking state.
+
+- Dynamic Auto: ``` switchport mode dynamic auto ```
+  - Switch port sends DTP advertisements to the remote port, that it is able to
+    trunk but does not request to go to the trunking state.
+
+- Dynamic Desirable: ``` switchport mode dynamic desirable ```
+  - Switch port sends DTP advertisements to the remote port, that it is able to
+    trunk and asks the remote switch port to go to the trunking state.
+
+- Access: ``` switchport mode access ```
+  - No trunking
+
+** DTP Trunk Negotiation - Link State **
+
+| "RED Entries - Link STATE  between S1 and S2 X – Invalid Combination" | "Dynamic Auto S1 Fa0/1" | "Dynamic Desirable S1  Fa0/1" | "Trunk (ON) S1 Fa0/1" | "Access S1 Fa0/1" |
+| :-------------------------------------------------------------------- | :---------------------: | :---------------------------: |  :------------------: | :---------------: |
+| Dynamic Auto      S2 Fa0/2 | Access | Trunk  | Trunk | Access |
+| Dynamic Desirable S2 Fa0/2 | Trunk  | Trunk  | Trunk | Access |
+| Trunk (ON)        S2 Fa0/2 | Trunk  | Trunk  | Trunk | X      |
+| Access            S2 Fa0/2 | Access | Access | X     | Access |
+
+
+- Turn off DTP: switchport nonegogiate
+  - The local port does not send out DTP frames to the remote port.
+  - The local port is then considered to be in an unconditional trunking state.
+  - Use this feature when you need to configure a trunk with a switch from
+    another switch vendor.</Text>
+        </Document>
+        <Document ID="5">
+            <Title>3</Title>
+            <Text>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf200
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 This is a test of using plain text in Scrivener.\
+This is a sentence.\
+\
+This is a new paragraph.\
+}</Text>
+        </Document>
+        <Document ID="69">
+            <Title>Inter-VLAN Routing</Title>
+            <Text>- What is Inter-VLAN Routing?
+  - Each VLAN is a unique broadcast domain.
+    - Computers on separate VLANs are, by default, not able to communicate.
+
+  - Each VLAN is a unique IP subnetwork.
+
+  - To allow VLANs to communicate, we need a router to communicate among
+    separate broadcast domains and unique IP subnetworks.
+
+- Inter-VLAN routing, then, is a process of forwarding traffic from one VLAN to
+  another VLAN using a router.
+
+- When a node in one VLAN needs to communicate with a node in another VLAN, a
+  router is necessary to route the traffic between VLANs.
+
+- Without the router, inter-VLAN traffic is not be possible.
+
+- Methods:
+  - Traditional Inter-VLAN Routing.
+  - Router-on-a-stick Inter-VLAN Routing.
+  - Switch Based Inter-VLAN Routing.
+
+- Traditional Inter-VLAN Routing:
+  - One router interface per VLAN.
+
+- Router-on-a-stick Inter-VLAN Routing:
+  - One router interface for all VLANs.
+
+- Layer 3 Switch Inter-VLAN Routing:
+  - Uses Switch Virtual Interfaces (SVI) which act as router interfaces to
+    retag the frame.
+
+&gt; When possible it is common practice to assign
+&gt;
+&gt; **VLAN numbers** the same number as the **subnet** addresses.
+&gt;</Text>
+        </Document>
+        <Document ID="76">
+            <Title>Multiple VLAN Registration Protocol (MVRP)</Title>
+            <Text>- Is a standards-based Layer 2 network protocol, for automatic configuration of
+  VLAN information on switches.
+
+- It is defined in the 802.1ak amendment to 802.1Q-2005.</Text>
+        </Document>
+        <Document ID="6">
+            <Title>Exam notes</Title>
+            <Text># Exam Notes
+
+&lt;dl&gt;
+  &lt;dt&gt;example of definition list item&lt;/dt&gt;
+  &lt;dd&gt;Definintion data&lt;/dd&gt;
+&lt;/dl&gt;
+
+The Networks and Switching exam contains the following questions:
+
+|     |                             |                                    |
+ ---- | --------------------------- | ---------------------------------- | ---------
+  Q1  |  Link Layer                 |  Short Answer Questions            |  10 marks
+  Q2  |  Transport Layer            |  Mixed Short Answer + Calculation  |  18 marks
+  Q3  |  Network Layer              |  Mixed Short Answer + Calculation  |   9 marks
+  Q4  |  General Networking         |  Data Extraction                   |  12 marks
+  Q5  |  VLSM                       |  Same as other VLSM tests          |  15 marks
+  Q6  |  Spanning Tree Protocol     |  Understand the Process            |  10 marks
+  Q7  |  Network Design             |  Mixed Short Answer + Calculation  |   7 marks
+  Q8  |  Virtual Trunking Protocol  |  Understand Process                |  13 marks
+  Q9  |  Wireless Networking        |  Short Answer                      |   9 marks
+
+# Networking Layers
+
+_Note: The following is the Networking "stack", however it is upside down_
+
+[1, 2] Layers are implemented in Hardware
+
+1. Physical
+2. Data Link
+
+[3..7] Layers are implemented in Software
+
+3. Network
+4. Transport
+5. Session
+6. Presentation
+7. Application
+
+
+
+
+## Q1 - Link Layer -
+_Short Answer Questions - 10 marks_
+
+** Summary **
+
+- The role of Data Link layer protocols in data transmission
+- Types of media access control methods.
+- Common logical network topologies
+- Ethernet
+  - CSMA/CD
+  - Framing
+  - Addressing
+  - Collision Domains
+  - Switching
+
+The Data Link Layer links the software and hardware layers.
+
+Physical devices devoted to the Data Link layer have both hardware and software
+components.
+
+
+#### Network Topologies
+
+**Physical** Topology
+
+- Is an arrangement of the nodes and the physical connections between them
+
+**Logical** Topology
+
+- Is the way a network transfers frames from one node to the next
+- This arrangement consists of virtual connections between the nodes of a
+  network independent of their physical layout
+
+**Media Access Control**
+
+- The data link layer “sees” the logical topology of the network when
+  controlling data access to the media
+
+
+#### Ethernet - Framing
+
+- The Frame Header contains the **control** information specified by the data
+  link layer protocol for the specific logical topology and media used
+
+- Frame control information is unique to each type of protocol
+
+- The data encapsulated in the frame is the network layer packet
+
+
+### Comparison of 802.3 and Ethernet Frame Structures and Field Size
+
+Field size in bytes
+
+| IEEE 802.3 |
+| :--------: | :----------------------: | :-----------------: | :------------: | :-----------: | :-------------------: | :------------------: |
+| 7          | 1                        | 6                   | 6              | 2             | 46 to 1500            | 4                    |
+| Preamble   | Start of Frame delimeter | Destination Address | Source Address | Length / Type | 802.2 Header and Data | Frame Check Sequence |
+
+| Ethernet |
+| :-----------------------------------: | :-----------------: | :------------: | :-----------: | :-------------------: | :------------------: |
+| 8                                     | 6                   | 6              | 2             | 46 to 1500            | 4                    |
+| Preamble                              | Destination Address | Source Address | Type          | Data                  | Frame Check Sequence |
+
+
+**Preamble**
+- Synchronisation signal (0101010…)
+- Allows receivers to synchronise clocks for rest of frame
+
+**Addresses**
+- Who is sending/receiving this frame
+
+**Type**
+- Tells Ethernet layer what Network Layer Protocol is carried in Data
+
+**Frame check**
+- Check for errors
+
+**Data**
+- 40-1500 bytes
+- Why have a minimum?
+- Why have a maximum?
+
+These restrictions are no longer valid but backwards compatibility require that
+they remain
+
+
+### Ethernet - Addresses
+
+- Uniquely identifies each host
+  - First Three octets = Manufacturer
+  - Second Three octets = Card Number
+
+
+- Ethernet is a shared medium technology
+
+
+- Broadcast addressing – address ff:ff:ff:ff:ff:ff
+  - Why do we need a broadcast MAC address?
+
+
+- How does the IP Layer learn the MAC address that corresponds to a unique IP
+  address?
+
+
+- Address usage
+  - Link Layer (Ethernet) – per-hop behaviour
+  - Network Layer (IP) – network-wide behaviour
+
+
+
+
+## Q2 - Transport Layer -
+_Mixed Short Answer + Calculation - 18 marks_
+
+** Summary **
+- Role of the Network Layer
+- Transport Layer Protocols
+- UDP
+- TCP
+  - Reliable throughput
+  - Flow Control
+
+
+### Role of the Transport Layer
+
+The Transport layer prepares application for transport over the network and
+processes network data for use by applications.
+
+Layers:
+- 4th Transport
+- 3rd Network
+- 2nd Data Link
+- 1st Physical
+
+** Basic Characteristics of the Transport Layer **
+
+- Primary role – Allow applications to communicate
+- Different categories of applications
+
+
+#### Transport Layer Protocols
+
+- Application categories serviced by TCP or UDP
+  - UDP – Real-time applications
+  - TCP – Reliability required
+
+- Has an impact on
+  - How these protocols behave under varying network conditions
+  - Subsequent impact on applications
+
+- Other Transport Layer Protocols exist
+
+
+### Port Numbers
+
+Used by both TCP and UDP to differentiate flows
+
+- Define a tuple (source/destination IP-address/port-number pairs)
+- Uniquely identify separate flows
+- Allows multiple networked applications to run concurrently on the same device
+- For server-type applications
+  - Server-side port standardised
+  - Client-side port random
+
+
+#### UDP - User Datagram Protocol
+
+- Simple extension of IP to the Application Layer
+  - Best Effort
+  - Error-prone
+  - Packet (message) oriented
+- UDP Header
+
+| &lt;---------- 32 Bits ---------&gt; |
+| :---------: | :--------------: |
+| Source Port | Destination Port |
+|    Length   |     Checksum     |
+
+
+- Application divides data into datagrams
+- No delay – datagrams are transmitted as soon as possible
+- Delivery may be out of order
+- No notification of lost datagrams
+
+
+#### TCP - Transmission Control Protocol
+
+- Connection Oriented
+- Guaranteed Delivery
+- In-order delivery
+- Flow Control
+
+- Since IP is best effort, this extra functionality must be incorporated into TCP
+
+
+** TCP Header Format **
+
+- Larger than UDP Header
+- Increased overhead
+
+[Insert diagram of TCP Header here]()
+
+
+** Connection Oriented **
+
+Each TCP endpoint must initiate the TCP connection through the 3-way handshake
+
+- SYN – Initial packet, client sends server initialisation parameters
+
+- SYN-ACK – Server response, server acknowledges clients initialisation data and
+  sends client initialisation parameters
+
+- ACK – Client completions, client acknowledges servers initialisation data
+
+
+** In Order Delivery **
+
+- Use of sequence numbers
+  - TCP Segments are numbered
+  - When they arrive at the receiever they can re-ordered
+
+
+** Sequence Numbers **
+- Based on number of bytes transmitted not segments
+  - Allows retransmitted segments to be larger or smaller
+
+- Initial sequence numbers exchanged in SYN and SYN-ACK packets
+  - Why aren’t the initial sequence numbers 0?
+
+
+** Reliable Transfer **
+
+- How do you guarantee delivery of data?
+- TCP uses positive acknowledgement of receipt of segments
+  - TCP acknowledges the next expected byte rather than the last byte received –
+    implementation reasons
+  - Un-acknowledged segments are retransmitted
+  - Retransmission continues until all data is received
+
+_If segments are lost because of congestion, the Receiver will acknowledge the
+last received sequential segment and reply with a reduced window size._
+
+
+** Throughput **
+
+- Overall throughput is not good if we only have one un-acknowledged segment
+- TCP uses a sliding window to have multiple un-acknowledged segments in transit
+
+- So how does reliable throughput work with a sliding window?
+
+
+** Transfer Times **
+
+- All data within the sliding window is available for immediate transmission
+- A sliding window means:
+  - Packets retransmitted late
+  - Packets have to wait for transmission
+- When applications sends data using TCP
+  - Data is queued in the TCP stack
+  - The stack segments the data and decides when to send
+  - Transfer may not be as soon as possible
+
+
+** Sliding Window **
+
+- How do we determine the window size
+  - High-bandwidth or long transmission delay links means more un-acknowledged
+    segments can be in transit at the same time
+  - We want to maximise throughput
+- Window size too small
+  - Network bandwidth not utilised
+- Window size too large
+  - Offering too much data concurrently
+  - Queues will form
+  - Packets will be dropped
+
+
+** Adjustable Window **
+
+- Problem is addressed with a Window size that is adjustable
+- Initially TCP was programmed to increase the Window size slowly and try to
+  stop at the ideal size to maximise throughput
+  - If segment are acknowledged, increase window size
+  - As soon as first segment is dropped, fix window size
+- This has problems
+
+
+** Flow Control **
+
+- There are two types of congestion that we wish to avoid
+  - Network Congestion
+  - Receiver Congestion
+
+- Receiver Congestion – End-to-End Flow Control
+  - Receiver informs source of optimal sliding window size
+  - Receiver not swamped with more datagrams than it can handle
+
+- Network Congestion is handled by the Slow Start and Congestion Avoidance
+  algorithms
+
+- Protocol maintains a congestion sliding window size
+
+- This size is modified by the Slow Start and Congestion Avoidance algorithms
+  in response to network congestion
+
+- Sliding Window Size = min(receiver window size, congestion window size)
+
+- The congestion window size begins at one
+
+- When an acknowledgement is received the window size is incremented
+  - This causes the window size to increase exponentially!
+  - Once window size reaches a threshold value or half the previous maximum
+    value (whichever is greater):
+    - Size is incremented by one only if all segments in the window are
+      acknowledged
+
+- This slows down the rate of increase
+
+&lt; [Pretty Graph](Lecture 6 - slide 28) &gt;
+
+
+- When a timer times out on receiving an acknowledgement
+  - Congestion window size is halved
+  - Timeout wait period is extended
+
+- This has the immediate effect of exponentially reducing transmission bit rate
+  and alleviating network congestion
+
+- Congestion has
+  - Exponential traffic back-off
+  - Exponential traffic rise up to a certain value and then linear
+
+
+### TCP Characteristics
+
+- TCP flows adjust to
+  - Transmit at the available bandwidth
+  - Share bandwidth evenly
+
+- Continuous work to define new Congestion Control Schemes
+  - Improve overall throughput
+  - Without affecting TCP fairness
+
+
+#### Interacting Traffic
+
+- TCP flows behave nicely in a congested network
+
+- What about UDP?
+
+- How does UDP traffic affect TCP traffic?
+
+- How does TCP traffic affect UDP traffic?
+
+
+
+
+
+## Q3 - Network Layer -
+_Mixed Short Answer + Calculation - 9 marks_
+
+** Summary **
+- Role of the Network Layer
+- Basic Characteristics of IP Protocol
+- Header Fields
+- Hierarchical addressing
+- IPv4 Class Based Addressing
+- Routing Overview
+- Addressing – Types of Communication
+
+### Role of the Network Layer
+
+&gt; As we communicate our data
+&gt; - [4. Transport] Our devices use the Transport layer to connect processes
+&gt; - [3. Network  ] And the Network layer enables devices to reach each other!
+
+#### Basic Characteristics - IP Protocol
+
+** TCP/IP **
+
+&gt; IP Header =&gt; TCP segments encapsulated into IP packets
+
+- **Connectionless** - No connection is stablished before sending data packets.
+- **Best Effort (unreliable)** - No overhead is used to guarantee packet delivery.
+- **Media Independent** - Operate independently of the medium carrying the data.
+
+
+#### Network Layer Encapsulation
+
+Generates IP Packets (Lecture 3 - slide 8)
+
+#### Header Fields
+
+**Ver (4bits)**
+– protocol version eg IPv4, IPv6
+
+**IHL(4bits)**
+– Internet Header Length in 32 bit words
+
+**Service Type (8bits)**
+– QoS, the field describes a level of throughput priority a router should use in
+  processing a packet eg a packet containing IP voice data gets precedence over
+  a packet containing a HTTP request
+
+**Packet length**
+– total length of packet, including header
+
+**Identification**
+– a sequence number used on reassembling fragments into packets
+
+**Flags**
+– More Flag is used in fragmentation and reassembly
+
+**Fragment Offset**
+– a router may have to fragment a packet when forwarding it from one medium to
+  another medium that has a smaller MTU. Offset and More Flag used in
+  reassembling packet from fragments at the destination
+
+**Time to Live (TTL)**
+– maximum hops a packet can take before it is considered undeliverable. Each
+  router decrements 1, when TTL = 0 packet dropped
+
+**Protocol**
+– upper level protocol segment encapsulated eg TCP, UDP
+
+**Options**
+– special routing services, rarely used
+
+**Padding**
+– used to ensure header ends on a 32 bit boundary
+
+
+
+### IP Addresses
+
+#### IP is not names
+
+Addresses like:
+- [www.swin.edu.au](www.swin.edu.au)
+- [mail.swin.edu.au](mail.swin.edu.au)
+
+Are not IP addresses
+
+The Internet uses a naming system (DNS – Domain Name System) to translate names
+to addresses
+
+
+#### IPv4
+
+- Current version of IP is IPv4
+- Unique addressing scheme
+- Since all hosts are computers, the address is expressed as a binary number
+- Each address is 32 bits in length
+- Total number of unique addresses
+  - 232 = 4,294,967,296 ≈ 4 thousand million
+- IP addresses range from 0 – 4,294,967,296
+- This is awkward – to difficult to read
+- We break the 32 bits into 4 bytes (or octets)
+  - Octet = 8 bits
+- Each octet is:
+  - Printed in decimal
+  - Separated by periods ‘.’
+- Decimal dot notation
+  - Four octets – each one byte
+  - Human Readable – not as much as names but better than binary or pure decimal
+
+** Looking into the future **
+
+- 4 thousand million is a lot of addresses
+- Consider:
+  - Each router on the Internet often has many IP addresses
+  - Each network connected device (printers, servers, PC’s) needs an address
+  - All the people in India and China
+- 4 thousand million is not enough
+- BUT there are only 32 bits in an IPv4 address
+
+
+#### IPv6
+
+- What happened to IPv5
+- Much larger address space
+- IPv6 address = 16 bytes = 128 bits
+  - 2128 = 340,282,366,920,938,463,463,374,607,431,768,211,456
+- Or
+  - 665,570,793,348,866,943,898,599 addresses for each m2 of the planet ☺
+- Other benefits
+  - Built in secure communications
+  - Support for mobile IP addresses
+  - Routing and Network Auto-configuration
+- So where is IPv6 ???
+
+
+### Routing Overview
+
+- Communication within a network, or subnet, happens without a network layer
+  device.
+- When a host communicates **outside** the local network, a **router** acts as a
+  **gateway** and performs the network layer function (**Routing**) of choosing
+  a path for the packet
+- A router does not forward broadcasts
+
+
+#### IP Routing
+
+The Internet is too large to have all these hosts together
+
+To help manage and design networks better – we divide the Internet address space
+into smaller segments
+- Called subnets
+- IP addresses allocated to one site tend to be bunched together
+- Routers configured to route between subnets
+- Hosts can directly send packets to other hosts on the same subnet
+- Hosts can only send packets to other subnets to a gateway router – router is
+  then responsible for either:
+  - Delivering packet to destination
+  - Forwarding packet to another router for delivery
+
+
+#### Simplifying Routing Decisions
+
+To simplify routing decisions
+- Subnets are a range of consecutive IP Addresses
+- All addresses in a subnet match a simple to check rule
+- Routing decisinos based on packet destination subnet
+
+
+### Dividing IP Addresses
+
+- IP Addresses divided in two
+  - Network Portion
+  - Host Portion
+- Network Portion
+  - Most significant (left-most) bits of IP Address
+  - Defines the network to which the IP Address belongs
+  - All IP Addresses with an equal Network Portion are in the same subnet
+- Host Portion
+  - Least significant (right-most) bits of IP Address
+  - Defines a host within a subnet
+- Network Portion bits + Host Portion bits = 32 (length of IP Address)
+
+
+#### Subnet Masks
+
+- The subnet mask is used to define which bits of an IP Address make the network
+  portion and which bits make the host portion
+- Subnet Mask = 32 bits
+  - 1-bit specifies that this bit in the IP Address is part of the
+    Network Address
+  - 0-bit specifies that this bit in the IP Address is part of the
+    Host Identifier
+- Since network = left-most **AND** host = right-most
+- Subnet Mask **MUST** consist of a string of ‘1’ bits followed by a string of
+  ‘0’ bits **ONLY**
+
+** Dotted Decimal and Binary Representation **
+
+| IPv4 Addresses
+| :------: | :------: | :------: | :------: |
+|    192   |    168   |    10    |    1     |
+| 11000000 | 11000000 | 11000000 | 11000000 |
+
+The computer using this IP address is on network
+               192.168.10.0
+
+#### Adress Types
+
+Network address
+- Identifies the network
+- All host bits set to 0
+
+| Network  |          |          |   Host   |
+| :------: | :------: | :------: | :------: |
+|    10    |     0    |     0    |     0    |
+| 00001010 | 00000000 | 00000000 | 00000000 |
+
+Broadcast address
+- Used to send data to all hosts in the network
+- All host bits set to 1
+
+| Network  |          |          |   Host   |
+| :------: | :------: | :------: | :------: |
+|    10    |     0    |     0    |    255   |
+| 11111111 | 00000000 | 00000000 | 11111111 |
+
+Host address
+- Identifies a end device in the network
+- At least one of the host bits must be set to 1
+
+| Network  |          |          |   Host   |
+| :------: | :------: | :------: | :------: |
+|    10    |     0    |     0    |     0    |
+| 00001010 | 00000000 | 00000000 | 00000001 |
+
+
+#### Reversed IP Address Subnets
+
+| Class | Unusable Networks | Private Networks        |
+| ----- | ----------------- | ----------------------- |
+|   A   | 0.0.0.0           | 10.0.0.0                |
+|       | 127.0.0.0         |                         |
+|   B   |                   | 172.16.0.0 - 172.31.0.0 |
+|   C   |                   | 192.168.0.0 -           |
+
+0.0.0.0 – Defines entire network and cannot be used
+
+127.0.0.0 – Reserved to define the local host
+
+Private networks:
+- Can be used in any network
+- Internet routers guaranteed not to route any packets with these IP addresses
+
+
+#### Addressing - Types of Communication
+
+** Unicast **
+
+- The process of sending a packet from one host to an individual host
+- Used for normal host-to-host communication in a network
+
+
+** Broadcast **
+
+The process of sending a packet from one host to all hosts in the network
+
+Used for:
+- the location of special services/devices for which the address is not known;
+  e.g. DHCP service
+- Exchanging routing information by routing protocols
+
+Broadcast Domain
+- Routers do not forward broadcasts.
+- Network 172.16.4.0 is referred to as a broadcast domain with the router
+  forming the boundary of the broadcast domain.
+
+
+** Multicast **
+
+The process of sending a packet from one host to a selected group of hosts
+
+Used for:
+- Video and audio broadcasts
+- Routing information exchange by some routing protocols
+- Distribution of software
+- News feeds
+
+Hosts that want to receive a particular multicast data are called
+** multicast clients **
+
+These clients use a client program to subscribe to the **multicast group**
+
+Each multicast group is represented by a single IPv4 multicast destination
+address
+
+
+
+
+## Q4 - General Networking -
+_Data Extraction - 12 marks_
+
+** ? **
+
+
+
+
+## Q5 - VLSM -
+_Same as other VLSM tests - 15 marks_
+
+**Remember:**
+
+| Network Bits | Subnet Mask | Addresses | Usable Hosts | Network         |
+| :----------- | :---------- | :-------- | :----------- | :-------------- |
+| 2-bits       | /30         | 4         | 2            | 255.255.255.252 |
+| 3-bits       | /29         | 8         | 6            | 255.255.255.248 |
+| 4-bits       | /28         | 16        | 14           | 255.255.255.240 |
+| 5-bits       | /27         | 32        | 30           | 255.255.255.224 |
+| 6-bits       | /26         | 64        | 62           | 255.255.255.192 |
+| 7-bits       | /25         | 128       | 126          | 255.255.255.128 |
+| 8-bits       | /24         | 256       | 254          | 255.255.255.0   |
+| 9-bits       | /23         | 512       | 510          | 255.255.254.0   |
+| 10-bits      | /22         | 1024      | 1022         | 255.255.248.0   |
+| 11-bits      | /21         | 2048      | 2046         | 255.255.240.0   |
+| 12-bits      | /20         | 4096      | 4094         | 255.255.224.0   |
+| 13-bits      | /19         | 8192      | 8190         | 255.255.192.0   |
+| 14-bits      | /18         | 16384     | 16382        | 255.255.128.0   |
+| 15-bits      | /17         | 32768     | 32766        | 255.255.0.0     |
+
+
+
+
+## Q6 - Spanning Tree Protocol -
+_Understand the Process - 10 marks_
+
+
+### Redundancy at Layer 2
+
+- **Redundancy** in networks is critical, it allows networks to be **fault
+  tolerant**
+
+- The **failure** of a single link, interface, or network device can cause
+  **downtime**
+
+- **Redundant topologies** protect against network downtime, by eliminating
+  outages caused by a **single point** of failure
+
+- Balance between the cost of redundancy with the need for network availability
+  (cost of failure)
+
+- Five Nines uptime – 99.999 % - 5.25 mins down time per year
+
+
+### Redundant Topologies
+
+- A **network of roads** is a global example of a redundant topology.
+
+- If one road is closed for repair there is likely an **alternate** route to the
+  destination
+
+
+### Redundant Design
+
+- Each Access Layer Switch is connected to 2 Distribution Layer Switches
+- Each Distribution Layer Switch is connected to 2 Core Layer Switches
+
+
+### Issues with Redundancy
+
+#### Layer 2 Loops (Broadcast Storm)
+
+When multiple paths exist between two devices on the switched network and STP
+(Spanning Tree Protocol) has been disabled, a Layer 2 loop can occur.
+
+- Ethernet frames do not have a time to live.
+
+  If there is a loop, they will continue to be forwarded from switch to switch
+  endlessly or until a link is disrupted and breaks the loop.
+
+- Broadcast frames are forwarded out all switch ports, except the originating
+  port. This ensures that all devices in the broadcast domain are able to
+  receive the frame.
+
+  If there is more than one path for the frame to be forwarded out, it can
+  result in an endless loop, a Broadcast Storm.
+
+
+#### Broadcast Storm - Why a Problem?
+
+- Use of bandwidth disrupts normal traffic flow
+
+- All devices must process (Use CPU cycles) the broadcasts
+
+- User PCs and servers can lock up trying to process all the broadcast frames
+
+- MAC address Table Instability – Which port to forward unicast frame ?
+
+
+#### Duplicate Unicast Frames
+
+Unicast frames sent onto a looped network can result in duplicate frames
+arriving at the destination device.
+
+Most upper layer protocols are not designed to recognize or cope with
+duplicate transmissions.
+- In general, protocols (TCP) that make use of a sequence-numbering mechanism
+  assume that the transmission has failed and that the sequence number has
+  recycled for another communication session.
+
+Fortunately, switches with STP enabled are capable of detecting loops on a
+network.
+  - STP eliminates these loop issues.
+
+
+### Spanning Tree Protocol (STP) 1990
+
+- STP ensures that there is only one logical path between all destinations on
+  the network by intentionally blocking redundant paths that could cause a loop
+  (loop-free path).
+
+- A port is considered blocked when network traffic is prevented from entering
+  or leaving that port.
+
+- The physical paths still exist to provide redundancy, but paths are disabled
+  to prevent the loops from occurring.
+
+- The switches running STP are able to compensate for failures by dynamically
+  unblocking the previously blocked ports and permitting traffic to traverse
+  the alternate paths.
+
+
+### Spanning Tree Algorithm (STA)
+
+STP uses the Spanning Tree Algorithm (STA) to determine which switch ports on a
+network need to be blocked to prevent loops from occurring.
+
+STA designates a single switch as the root bridge and uses it as the reference
+point for all STA calculations.
+
+Three steps:
+- Elect one root bridge
+- Elect the root port on all non-root bridges
+- Elect the designated and non-designated ports
+
+
+#### The Root Bridge - Election Process
+
+All switches in the broadcast domain participate in the election process:
+
+- After a switch boots, it sends out BPDU frames containing the switch BID and
+  the root ID every 2 seconds.
+  - BID is made up of a priority value, (an extended system ID), and the MAC
+    address of the switch.
+
+- Initially, each switch identifies itself (the root ID matches the local BID)
+  as the root bridge after boot up,
+
+As the switches forward their BPDU frames, adjacent switches read the Root ID
+information from the BPDU frame:
+
+- If the root ID from the BPDU received is lower than the root ID on the
+  receiving switch, the receiving switch updates its root ID identifying the
+  adjacent switch as the root bridge.
+
+- The switch then forwards new BPDU frames with the lower root ID to the other
+  adjacent switches.
+
+- Eventually, the switch with the lowest BID ends up being identified as the
+  root bridge for the spanning-tree instance.
+
+
+### Bridge ID (BID)
+
+| BID - 8 Bytes    |
+| :--------------: | :-------------------------: |
+| Bridge Priority  |              MAC            |
+| &lt;--------------&gt; | &lt;-------------------------&gt; |
+|      2 Bytes     |           6 Bytes           |
+| Range: 0-65, 535 | From Backplane / Supervisor |
+| Default: 32, 768 |                             |
+
+- Bridge ID (BID) is used to identify each bridge/switch.
+- The BID is used in determining the centre of the network, in respect to STP,
+  known as the root bridge.
+- Consists of two components:
+  - A 2-byte Bridge Priority: Cisco switch defaults to 32,768 (decimal)
+  - A 6-byte MAC address (hexadecimal)
+- BID is used to elect a root bridge
+- **Lowest Bridge ID is the root.**
+- If all devices have the same priority, the bridge with the lowest MAC address
+  becomes the root bridge.
+
+
+### Least Cost Paths to the Root Bridge
+
+When the root bridge has been designated for the spanning-tree instance, the STA
+starts the process of determining the best paths to the root bridge from all
+destinations in the broadcast domain.
+
+The path information is determined by summing up the individual port costs along
+the path from the destination to the root bridge.
+
+| Link Speed | Cost |
+| ---------- | ---- |
+|  10 Gbp    |   2  |
+|   1 Gbps   |   4  |
+| 100 Mbps   |  19  |
+|  10 Mbps   | 100  |
+
+
+### Port Roles
+
+Ports are configured with distinct roles:
+
+- **Root port** - sends and receives traffic
+  - Elect one root-port for each non-root bridge
+  - Is port with lowest cost path from the non-root bridge to the root bridge
+    (lowest next hop’s bridge ID and then next hop’s port ID are tiebreakers)
+
+- **Designated ports** – sends and receives traffic
+  - One designated port per each segment (area between two bridges)
+  - Is the least-cost path to the root bridge (the bridge ID acts as tiebreaker)
+  - On the **root bridge**, all ports **act** as **designated ports**
+
+- **Non-designated ports** – blocking state
+  - Non-designated port on each segment is blocked to eliminate loop.
+
+
+### Port States
+
+Each switch port transitions through **5 possible port states** and **3 BPDU
+timers.**
+
+The spanning tree is determined immediately after a switch is finished booting
+up. If a switch port were to transition directly from the blocking to the
+forwarding state, the port could temporarily create a data loop if the switch
+was not aware of all topology information at the time.
+
+1. Blocking - The port is a non-designated port and does not participate in
+   frame forwarding.
+   - The port receives BPDU frames to determine the location and root ID of the
+     root bridge switch and what port roles each switch port should assume in
+     the final active STP topology.
+
+2. Listening - STP has determined that the port can participate in frame
+   forwarding according to the BPDU frames that the switch has received thus
+   far.
+   - At this point, the switch port is not only receiving BPDU frames, it is
+     also transmitting its own BPDU frames and informing adjacent switches that
+     the switch port is preparing to participate in the active topology.
+
+3. Learning - The port prepares to participate in frame forwarding and begins
+   to populate the MAC address table.
+
+4. Forwarding - The port is considered part of the active topology and forwards
+   frames and also sends and receives BPDU frames.
+
+5. Disabled - The Layer 2 port does not participate in STP and does not forward
+   frames.
+   - The disabled state is set when the switch port is administratively
+     disabled.
+
+
+### Putting It All Together
+
+**STP Convergence:**
+- Convergence is the time it takes for the network to:
+  - Determine which switch is going to assume the role of the root bridge.
+  - Set switch ports to their final spanning-tree port roles where all potential
+    loops are eliminated.
+
+**Three Steps:**
+- Elect a **Root bridge**.
+- Elect the **Root ports**.
+- Elect the **Designated and Non-designated** ports.
+
+
+### Advance Topics
+
+Lecture 10 - slides 27 _and onwards_
+
+
+
+
+## Q7 - Network Design -
+_Mixed Short Answer + Calculation - 7 marks_
+
+** Summary **
+
+- Describe Hierarchical Network Model:
+  - Layers – Access, Distribution, Core
+  - Benefits
+  - Design principles (Rules of Thumb)
+
+- Describe a Converged Network
+
+- Considerations in Selecting Network Switches
+
+
+### Hierarchical Network Model
+
+- When building a LAN that satisfies the needs of a small or medium-sized
+  business, your plan is more likely to be successful if a hierarchical design
+  model is used:
+
+  - This involves dividing the network into discrete layers.
+
+  - Each layer provides specific functions that define its role within the
+    overall network.
+
+  - By separating the various functions that exist on a network, the network
+    design becomes modular, which facilitates scalability and performance.
+
+- The typical hierarchical design model is broken up in to three layers:
+  - access
+  - distribution
+  - core
+
+&lt;[Diagram example of Hierachical Network Model](Lecture 9 - slide 4)&gt;
+
+Core idea of Layers:
+- (Top)    Core
+- (Middle) Distribution
+- (Bottom) Access
+
+
+~~Needs more work on notes here!!!~~
+
+
+
+
+## Q8 - Virtual Trunking Protocol -
+_Understand Process - 13 marks_
+
+** Trunking **
+- The concept of trunking began with the telephone industry.
+
+- Multiple calls were moved between customers and central offices or between the
+  offices themselves over a single physical connection.
+
+
+### VLAN Trunking
+
+In network switching technologies, a trunk:
+- carries traffic of multiple VLANs over the singular physical link
+
+- is a point-to-point connection between a switch interface and an interface of
+  another device, e.g. a switch or a router
+
+
+### Frame Tagging
+
+- Remember that switches are Layer 2 devices.
+  - Only use the Ethernet frame header information.
+  - Frame header does not contain information about VLAN membership.
+
+- VLAN membership (i.e. VLAN ID or VLAN Number) must be identified for each
+  frame that is transferred over the trunk.
+
+- Different tagging schemes exist. The two most common tagging schemes for
+  Ethernet segments are:
+  - ISL (Inter-Switch Link) – A Cisco proprietary protocol
+  - 802.1Q – An IEEE standard
+
+- Each protocol defines how VLAN IDs get incorporated into an Ethernet frame.
+
+- VLAN ID can be in a normal range, 1-1005, or an extended range, 1006-4094.
+
+
+### ISL - Frame Tagging
+
+&gt; [&lt;Diagram of tagged frame packet&gt;](Lecture 8 - slide 6)
+&gt;
+&gt; Standard NIC cards and networking devices don’t understand this giant frame
+&gt; (up to 1548 bytes long). A Cisco switch must remove this encapsulation before
+&gt; sending the frame out on an access link.
+&gt;
+
+- An Ethernet frame is encapsulated with a header which includes VLAN ID
+
+- It adds overhead to the packet as a 26-byte header containing a 15-bit VLAN
+  ID.
+
+- In addition, a 4-byte cyclic redundancy check (CRC) is appended to the end of
+  each frame.
+
+- This CRC is in addition to any frame checking that an Ethernet frame requires.
+
+
+### IEEE 802.1Q – Frame Tagging
+
+&gt; NIC cards and networking devices can accept this “baby giant” frame (up to
+&gt; 1522 bytes). However, a Cisco switch must remove this encapsulation before
+&gt; sending the frame out on an access link. Must recalculate CRC.
+&gt;
+&gt; [&lt;Diagram of tagged frame packet&gt;](Lecture 8 - slide 7)
+&gt;
+
+- Significantly less overhead than the ISL
+
+- As opposed to the 30 bytes added by ISL, 802.1Q inserts only an additional 4
+  bytes into the Ethernet frame
+
+
+### ISL vs. 802.1q Frame Tagging
+
+| ISL | IEEE 802.1q |
+| :-- | :---------- |
+| Cisco proprietary protocol | IEEE standard |
+| Is supported only on certain Cisco devices | Allow trunks between different vendors’ devices |
+| Encapsulate the original Ethernet frame – the original frame is placed in between the header and trailer. | Modify the original frame – a tag is inserted into the middle of the original frame. |
+| More overhead (30 bytes addition) | Less overhead (4 bytes addition) |
+| Untagged frames received from an ISL trunk port are dropped. | Support both tagged and untagged traffic (via native VLAN). |
+| ^ | ^ |
+| May still be used in legacy networks | Today use |
+
+
+### VLANs and Trunking
+
+- It is important to understand that a trunk link does not belong to a specific
+  VLAN.
+
+- The responsibility of a trunk link is to act as a conduit for VLANs between
+  switches and routers (or switches and switches).
+
+
+### Dynamic Trunking Protocol (DTP)
+
+** Cisco proprietary protocol: **
+- Negotiate status of trunk ports AND trunk encapsulation of trunk ports.
+
+- Automatically enabled on a switch port when certain trunking modes are
+  configured on the switch port.
+
+- DTP manages trunk negotiation only if the port on the other switch is
+  configured in a trunk mode that supports DTP.
+
+- DTP supports both ISL and 802.1Q trunks.
+
+- Trunk (ON):  ``` switchport mode trunk ```
+  - Switch port sends DTP advertisements to the remote port that it is changing
+    to the trunking state. Regardless of response from remote port it changes to
+    the trunking state.
+
+- Dynamic Auto: ``` switchport mode dynamic auto ```
+  - Switch port sends DTP advertisements to the remote port, that it is able to
+    trunk but does not request to go to the trunking state.
+
+- Dynamic Desirable: ``` switchport mode dynamic desirable ```
+  - Switch port sends DTP advertisements to the remote port, that it is able to
+    trunk and asks the remote switch port to go to the trunking state.
+
+- Access: ``` switchport mode access ```
+  - No trunking
+
+** DTP Trunk Negotiation - Link State **
+
+| "RED Entries - Link STATE  between S1 and S2 X – Invalid Combination" | "Dynamic Auto S1 Fa0/1" | "Dynamic Desirable S1  Fa0/1" | "Trunk (ON) S1 Fa0/1" | "Access S1 Fa0/1" |
+| :-------------------------------------------------------------------- | :---------------------: | :---------------------------: |  :------------------: | :---------------: |
+| Dynamic Auto      S2 Fa0/2 | Access | Trunk  | Trunk | Access |
+| Dynamic Desirable S2 Fa0/2 | Trunk  | Trunk  | Trunk | Access |
+| Trunk (ON)        S2 Fa0/2 | Trunk  | Trunk  | Trunk | X      |
+| Access            S2 Fa0/2 | Access | Access | X     | Access |
+
+
+- Turn off DTP: switchport nonegogiate
+  - The local port does not send out DTP frames to the remote port.
+  - The local port is then considered to be in an unconditional trunking state.
+  - Use this feature when you need to configure a trunk with a switch from
+    another switch vendor.
+
+
+### Inter-VLAN Routing
+
+- What is Inter-VLAN Routing?
+  - Each VLAN is a unique broadcast domain.
+    - Computers on separate VLANs are, by default, not able to communicate.
+
+  - Each VLAN is a unique IP subnetwork.
+
+  - To allow VLANs to communicate, we need a router to communicate among
+    separate broadcast domains and unique IP subnetworks.
+
+- Inter-VLAN routing, then, is a process of forwarding traffic from one VLAN to
+  another VLAN using a router.
+
+- When a node in one VLAN needs to communicate with a node in another VLAN, a
+  router is necessary to route the traffic between VLANs.
+
+- Without the router, inter-VLAN traffic is not be possible.
+
+- Methods:
+  - Traditional Inter-VLAN Routing.
+  - Router-on-a-stick Inter-VLAN Routing.
+  - Switch Based Inter-VLAN Routing.
+
+- Traditional Inter-VLAN Routing:
+  - One router interface per VLAN.
+
+- Router-on-a-stick Inter-VLAN Routing:
+  - One router interface for all VLANs.
+
+- Layer 3 Switch Inter-VLAN Routing:
+  - Uses Switch Virtual Interfaces (SVI) which act as router interfaces to
+    retag the frame.
+
+&gt; When possible it is common practice to assign
+&gt;
+&gt; **VLAN numbers** the same number as the **subnet** addresses.
+&gt;
+
+### Physical and Logical interfaces
+
+- Subinterfaces on a router can be used to divide a single physical interface
+  into multiple logical interfaces.
+
+- Each physical interface can have up to 65,535 logical interfaces.
+
+&lt;some diagrams...&gt;
+********************************************************************************
+
+### VLAN Trunking Protocol (VTP)
+
+** VLAN info box **
+
+&gt; - VLAN configuration consistency across the network
+&gt; - VLANs are trunked over mixed media. For example, an Ethernet VLAN is mapped
+&gt;   to high-speed ATM LANE or FDDI VLAN
+&gt; - Accurate tracking and monitorin of VLANs
+&gt; - "Plug-and-play" configuration when adding new VLANs
+
+- VTP is a Cisco proprietary protocol that allows VLAN configuration to be
+  consistently maintained across a common administrative domain.
+
+- VTP minimizes the possible configuration inconsistencies that arise when
+  changes are made.
+
+- VTP reduces the complexity of managing and monitoring VLAN networks, allowing
+  VLAN changes on one switch to be propagated to other switches via VTP.
+
+- On most Cisco switches, VTP is running and has certain defaults already
+  configured.
+
+- VTP is not necessary in order to configure VLANs or Trunking on Cisco
+  Switches.
+
+
+#### VTP Componenets
+
+- VTP Domain:
+  - Consists of one or more interconnected switches.
+  - All switches in a domain share VLAN configuration details using VTP
+    advertisements.
+  - Router or Layer 3 switch defines the boundary of domain eg VTP Domains A
+    and B.
+
+- VTP Modes:
+  - Three different modes: Server, Client, Transparent
+
+- VTP Server:
+  - VTP servers advertise the VTP VLAN information to other switches in the same
+    VTP domain.
+  - The server is where VLANs can be created, deleted, or renamed for the
+    domain.
+
+- VTP Client:
+  - VTP clients Forward advertisements to other clients.
+  - You cannot create, change, or delete VLANs.
+  - You must configure VTP Client mode.
+
+- VTP Transparent mode:
+  - Forward VTP advertisements but ignore information contained in the message.
+
+  - A transparent switch will not modify its database when updates are received,
+    nor will the switch send out an update indicating a change in its own VLAN
+    status.
+
+  - VLANs that are created are LOCAL to that switch only
+
+  - Except for forwarding VTP advertisements, VTP is disabled on a transparent
+    switch.
+
+
+#### VTP Implementation
+
+&gt; ** Configuration Revision Number **
+&gt; Each advertisement starts as configuration revision number 0. As changes are
+&gt; made, the configuration revision number is increased incrementally by one, or
+&gt; n + 1. The revision number continues to increment until it reaches
+&gt; 2,147,483,648. When it reaches that point, the counter will reset back to
+&gt; zero.
+
+
+** There are three types of VTP messages: **
+
+- Advertisement requests
+  - clients request VLAN information
+  - and the server responds with summary and subset advertisements
+
+- Summary advertisements
+  - By default, server and client Catalyst switches issue summary advertisements
+    every five minutes.
+  - Servers inform neighbour switches what they believe to be the current VTP
+    revision number.
+
+- Subset advertisements
+  - Subset advertisements contain detailed information about VLANs such as VTP
+    version type, domain name and related fields, and the configuration revision
+    number.
+
+#### VTP Pruning
+
+- Prevents unnecessary flooding of broadcast information from one VLAN across
+  all trunks in a VTP domain.
+
+- Permits switches to negotiate which VLANs are assigned to ports at the other
+  end of a trunk
+  and prune the VLANs that are not assigned to ports on the remote switch.
+
+- Disabled by default.
+
+- Configured using the vtp pruning global configuration command.
+
+
+#### Adding a switch to an existing VTP domain
+
+&gt; - Clear the configuration
+&gt; - Cleat the VTP file
+&gt; - Power cycle the switch
+&gt; - Configure VTP mode and domain
+&gt; - Password protect the domain
+
+- Use caution when inserting a new switch into an existing domain.
+
+- In order to prepare a switch to enter an existing VTP domain, perform the
+  following steps. From the privileged mode:  
+  - delete vlan.dat
+  - erase startup-config
+  - power cycle the switch.
+
+- This will avoid potential problems resulting from residual VLAN configurations
+  or adding a switch with a higher VTP configuration revision number that could
+  result in the propagation of incorrect VLAN information.
+
+
+#### Multiple VLAN Registration Protocol (MVRP)
+
+- Is a standards-based Layer 2 network protocol, for automatic configuration of
+  VLAN information on switches.
+
+- It is defined in the 802.1ak amendment to 802.1Q-2005.
+
+
+
+
+## Q9 - Wireless Networking -
+_Short Answer - 9 marks_
+</Text>
+        </Document>
+        <Document ID="77">
+            <Title>Q9 - Wireless Networking -</Title>
+            <Text>_Short Answer - 9 marks_</Text>
+        </Document>
+        <Document ID="10">
+            <Title>Q1 - Link Layer -</Title>
+            <Text>_Short Answer Questions - 10 marks_
+
+** Summary **
+
+- The role of Data Link layer protocols in data transmission
+- Types of media access control methods.
+- Common logical network topologies
+- Ethernet
+  - CSMA/CD
+  - Framing
+  - Addressing
+  - Collision Domains
+  - Switching
+
+The Data Link Layer links the software and hardware layers.
+
+Physical devices devoted to the Data Link layer have both hardware and software
+components.</Text>
+        </Document>
+        <Document ID="8">
+            <Title>Exam Notes</Title>
+            <Text>&lt;dl&gt;
+  &lt;dt&gt;example of definition list item&lt;/dt&gt;
+  &lt;dd&gt;Definintion data&lt;/dd&gt;
+&lt;/dl&gt;
+
+The Networks and Switching exam contains the following questions:
+
+|     |                             |                                    |
+ ---- | --------------------------- | ---------------------------------- | ---------
+  Q1  |  Link Layer                 |  Short Answer Questions            |  10 marks
+  Q2  |  Transport Layer            |  Mixed Short Answer + Calculation  |  18 marks
+  Q3  |  Network Layer              |  Mixed Short Answer + Calculation  |   9 marks
+  Q4  |  General Networking         |  Data Extraction                   |  12 marks
+  Q5  |  VLSM                       |  Same as other VLSM tests          |  15 marks
+  Q6  |  Spanning Tree Protocol     |  Understand the Process            |  10 marks
+  Q7  |  Network Design             |  Mixed Short Answer + Calculation  |   7 marks
+  Q8  |  Virtual Trunking Protocol  |  Understand Process                |  13 marks
+  Q9  |  Wireless Networking        |  Short Answer                      |   9 marks</Text>
+        </Document>
+        <Document ID="9">
+            <Title>Networking Layers</Title>
+            <Text>_Note: The following is the Networking "stack", however it is upside down_
+
+[1, 2] Layers are implemented in Hardware
+
+1. Physical
+2. Data Link
+
+[3..7] Layers are implemented in Software
+
+3. Network
+4. Transport
+5. Session
+6. Presentation
+7. Application</Text>
+        </Document>
+        <Document ID="11">
+            <Title>Network Topologies</Title>
+            <Text>**Physical** Topology
+
+- Is an arrangement of the nodes and the physical connections between them
+
+**Logical** Topology
+
+- Is the way a network transfers frames from one node to the next
+- This arrangement consists of virtual connections between the nodes of a
+  network independent of their physical layout
+
+**Media Access Control**
+
+- The data link layer “sees” the logical topology of the network when
+  controlling data access to the media</Text>
+        </Document>
+        <Document ID="12">
+            <Title>Ethernet - Framing</Title>
+            <Text>- The Frame Header contains the **control** information specified by the data
+  link layer protocol for the specific logical topology and media used
+
+- Frame control information is unique to each type of protocol
+
+- The data encapsulated in the frame is the network layer packet</Text>
+        </Document>
+        <Document ID="13">
+            <Title>Comparison of 802.3 and Ethernet Frame Structures and Field Size</Title>
+            <Text>Field size in bytes
+
+| IEEE 802.3 |
+| :--------: | :----------------------: | :-----------------: | :------------: | :-----------: | :-------------------: | :------------------: |
+| 7          | 1                        | 6                   | 6              | 2             | 46 to 1500            | 4                    |
+| Preamble   | Start of Frame delimeter | Destination Address | Source Address | Length / Type | 802.2 Header and Data | Frame Check Sequence |
+
+| Ethernet |
+| :-----------------------------------: | :-----------------: | :------------: | :-----------: | :-------------------: | :------------------: |
+| 8                                     | 6                   | 6              | 2             | 46 to 1500            | 4                    |
+| Preamble                              | Destination Address | Source Address | Type          | Data                  | Frame Check Sequence |
+
+
+**Preamble**
+- Synchronisation signal (0101010…)
+- Allows receivers to synchronise clocks for rest of frame
+
+**Addresses**
+- Who is sending/receiving this frame
+
+**Type**
+- Tells Ethernet layer what Network Layer Protocol is carried in Data
+
+**Frame check**
+- Check for errors
+
+**Data**
+- 40-1500 bytes
+- Why have a minimum?
+- Why have a maximum?
+
+These restrictions are no longer valid but backwards compatibility require that
+they remain</Text>
+        </Document>
+        <Document ID="20">
+            <Title>TCP - Transmission Control Protocol</Title>
+            <Text>- Connection Oriented
+- Guaranteed Delivery
+- In-order delivery
+- Flow Control
+
+- Since IP is best effort, this extra functionality must be incorporated into TCP
+
+
+** TCP Header Format **
+
+- Larger than UDP Header
+- Increased overhead
+
+[Insert diagram of TCP Header here]()
+
+
+** Connection Oriented **
+
+Each TCP endpoint must initiate the TCP connection through the 3-way handshake
+
+- SYN – Initial packet, client sends server initialisation parameters
+
+- SYN-ACK – Server response, server acknowledges clients initialisation data and
+  sends client initialisation parameters
+
+- ACK – Client completions, client acknowledges servers initialisation data
+
+
+** In Order Delivery **
+
+- Use of sequence numbers
+  - TCP Segments are numbered
+  - When they arrive at the receiever they can re-ordered
+
+
+** Sequence Numbers **
+- Based on number of bytes transmitted not segments
+  - Allows retransmitted segments to be larger or smaller
+
+- Initial sequence numbers exchanged in SYN and SYN-ACK packets
+  - Why aren’t the initial sequence numbers 0?
+
+
+** Reliable Transfer **
+
+- How do you guarantee delivery of data?
+- TCP uses positive acknowledgement of receipt of segments
+  - TCP acknowledges the next expected byte rather than the last byte received –
+    implementation reasons
+  - Un-acknowledged segments are retransmitted
+  - Retransmission continues until all data is received
+
+_If segments are lost because of congestion, the Receiver will acknowledge the
+last received sequential segment and reply with a reduced window size._
+
+
+** Throughput **
+
+- Overall throughput is not good if we only have one un-acknowledged segment
+- TCP uses a sliding window to have multiple un-acknowledged segments in transit
+
+- So how does reliable throughput work with a sliding window?
+
+
+** Transfer Times **
+
+- All data within the sliding window is available for immediate transmission
+- A sliding window means:
+  - Packets retransmitted late
+  - Packets have to wait for transmission
+- When applications sends data using TCP
+  - Data is queued in the TCP stack
+  - The stack segments the data and decides when to send
+  - Transfer may not be as soon as possible
+
+
+** Sliding Window **
+
+- How do we determine the window size
+  - High-bandwidth or long transmission delay links means more un-acknowledged
+    segments can be in transit at the same time
+  - We want to maximise throughput
+- Window size too small
+  - Network bandwidth not utilised
+- Window size too large
+  - Offering too much data concurrently
+  - Queues will form
+  - Packets will be dropped
+
+
+** Adjustable Window **
+
+- Problem is addressed with a Window size that is adjustable
+- Initially TCP was programmed to increase the Window size slowly and try to
+  stop at the ideal size to maximise throughput
+  - If segment are acknowledged, increase window size
+  - As soon as first segment is dropped, fix window size
+- This has problems
+
+
+** Flow Control **
+
+- There are two types of congestion that we wish to avoid
+  - Network Congestion
+  - Receiver Congestion
+
+- Receiver Congestion – End-to-End Flow Control
+  - Receiver informs source of optimal sliding window size
+  - Receiver not swamped with more datagrams than it can handle
+
+- Network Congestion is handled by the Slow Start and Congestion Avoidance
+  algorithms
+
+- Protocol maintains a congestion sliding window size
+
+- This size is modified by the Slow Start and Congestion Avoidance algorithms
+  in response to network congestion
+
+- Sliding Window Size = min(receiver window size, congestion window size)
+
+- The congestion window size begins at one
+
+- When an acknowledgement is received the window size is incremented
+  - This causes the window size to increase exponentially!
+  - Once window size reaches a threshold value or half the previous maximum
+    value (whichever is greater):
+    - Size is incremented by one only if all segments in the window are
+      acknowledged
+
+- This slows down the rate of increase
+
+&lt; [Pretty Graph](Lecture 6 - slide 28) &gt;
+
+
+- When a timer times out on receiving an acknowledgement
+  - Congestion window size is halved
+  - Timeout wait period is extended
+
+- This has the immediate effect of exponentially reducing transmission bit rate
+  and alleviating network congestion
+
+- Congestion has
+  - Exponential traffic back-off
+  - Exponential traffic rise up to a certain value and then linear</Text>
+        </Document>
+        <Document ID="21">
+            <Title>TCP Characteristics</Title>
+            <Text>- TCP flows adjust to
+  - Transmit at the available bandwidth
+  - Share bandwidth evenly
+
+- Continuous work to define new Congestion Control Schemes
+  - Improve overall throughput
+  - Without affecting TCP fairness</Text>
+        </Document>
+        <Document ID="14">
+            <Title>Ethernet - Addresses</Title>
+            <Text>- Uniquely identifies each host
+  - First Three octets = Manufacturer
+  - Second Three octets = Card Number
+
+
+- Ethernet is a shared medium technology
+
+
+- Broadcast addressing – address ff:ff:ff:ff:ff:ff
+  - Why do we need a broadcast MAC address?
+
+
+- How does the IP Layer learn the MAC address that corresponds to a unique IP
+  address?
+
+
+- Address usage
+  - Link Layer (Ethernet) – per-hop behaviour
+  - Network Layer (IP) – network-wide behaviour</Text>
+        </Document>
+        <Document ID="22">
+            <Title>Interacting Traffic</Title>
+            <Text>- TCP flows behave nicely in a congested network
+
+- What about UDP?
+
+- How does UDP traffic affect TCP traffic?
+
+- How does TCP traffic affect UDP traffic?</Text>
+        </Document>
+        <Document ID="15">
+            <Title>Q2 - Transport Layer -</Title>
+            <Text>_Mixed Short Answer + Calculation - 18 marks_
+
+** Summary **
+- Role of the Network Layer
+- Transport Layer Protocols
+- UDP
+- TCP
+  - Reliable throughput
+  - Flow Control</Text>
+        </Document>
+        <Document ID="30">
+            <Title>IPv4</Title>
+            <Text>- Current version of IP is IPv4
+- Unique addressing scheme
+- Since all hosts are computers, the address is expressed as a binary number
+- Each address is 32 bits in length
+- Total number of unique addresses
+  - 232 = 4,294,967,296 ≈ 4 thousand million
+- IP addresses range from 0 – 4,294,967,296
+- This is awkward – to difficult to read
+- We break the 32 bits into 4 bytes (or octets)
+  - Octet = 8 bits
+- Each octet is:
+  - Printed in decimal
+  - Separated by periods ‘.’
+- Decimal dot notation
+  - Four octets – each one byte
+  - Human Readable – not as much as names but better than binary or pure decimal
+
+** Looking into the future **
+
+- 4 thousand million is a lot of addresses
+- Consider:
+  - Each router on the Internet often has many IP addresses
+  - Each network connected device (printers, servers, PC’s) needs an address
+  - All the people in India and China
+- 4 thousand million is not enough
+- BUT there are only 32 bits in an IPv4 address</Text>
+        </Document>
+        <Document ID="23">
+            <Title>Q3 - Network Layer -</Title>
+            <Text>_Mixed Short Answer + Calculation - 9 marks_
+
+** Summary **
+- Role of the Network Layer
+- Basic Characteristics of IP Protocol
+- Header Fields
+- Hierarchical addressing
+- IPv4 Class Based Addressing
+- Routing Overview
+- Addressing – Types of Communication</Text>
+        </Document>
+        <Document ID="16">
+            <Title>Role of the Transport Layer</Title>
+            <Text>The Transport layer prepares application for transport over the network and
+processes network data for use by applications.
+
+Layers:
+- 4th Transport
+- 3rd Network
+- 2nd Data Link
+- 1st Physical
+
+** Basic Characteristics of the Transport Layer **
+
+- Primary role – Allow applications to communicate
+- Different categories of applications</Text>
+        </Document>
+        <Document ID="31">
+            <Title>IPv6</Title>
+            <Text>- What happened to IPv5
+- Much larger address space
+- IPv6 address = 16 bytes = 128 bits
+  - 2128 = 340,282,366,920,938,463,463,374,607,431,768,211,456
+- Or
+  - 665,570,793,348,866,943,898,599 addresses for each m2 of the planet ☺
+- Other benefits
+  - Built in secure communications
+  - Support for mobile IP addresses
+  - Routing and Network Auto-configuration
+- So where is IPv6 ???</Text>
+        </Document>
+        <Document ID="24">
+            <Title>Role of the Network Layer</Title>
+            <Text>&gt; As we communicate our data
+&gt; - [4. Transport] Our devices use the Transport layer to connect processes
+&gt; - [3. Network  ] And the Network layer enables devices to reach each other!</Text>
+        </Document>
+        <Document ID="17">
+            <Title>Transport Layer Protocols</Title>
+            <Text>- Application categories serviced by TCP or UDP
+  - UDP – Real-time applications
+  - TCP – Reliability required
+
+- Has an impact on
+  - How these protocols behave under varying network conditions
+  - Subsequent impact on applications
+
+- Other Transport Layer Protocols exist</Text>
+        </Document>
+        <Document ID="32">
+            <Title>Routing Overview</Title>
+            <Text>- Communication within a network, or subnet, happens without a network layer
+  device.
+- When a host communicates **outside** the local network, a **router** acts as a
+  **gateway** and performs the network layer function (**Routing**) of choosing
+  a path for the packet
+- A router does not forward broadcasts</Text>
+        </Document>
+        <Document ID="25">
+            <Title>Basic Characteristics - IP Protocol</Title>
+            <Text>** TCP/IP **
+
+&gt; IP Header =&gt; TCP segments encapsulated into IP packets
+
+- **Connectionless** - No connection is stablished before sending data packets.
+- **Best Effort (unreliable)** - No overhead is used to guarantee packet delivery.
+- **Media Independent** - Operate independently of the medium carrying the data.</Text>
+        </Document>
+        <Document ID="18">
+            <Title>Port Numbers</Title>
+            <Text>Used by both TCP and UDP to differentiate flows
+
+- Define a tuple (source/destination IP-address/port-number pairs)
+- Uniquely identify separate flows
+- Allows multiple networked applications to run concurrently on the same device
+- For server-type applications
+  - Server-side port standardised
+  - Client-side port random</Text>
+        </Document>
+        <Document ID="40">
+            <Title>Q4 - General Networking -</Title>
+            <Text>_Data Extraction - 12 marks_
+
+** ? **</Text>
+        </Document>
+        <Document ID="33">
+            <Title>IP Routing</Title>
+            <Text>The Internet is too large to have all these hosts together
+
+To help manage and design networks better – we divide the Internet address space
+into smaller segments
+- Called subnets
+- IP addresses allocated to one site tend to be bunched together
+- Routers configured to route between subnets
+- Hosts can directly send packets to other hosts on the same subnet
+- Hosts can only send packets to other subnets to a gateway router – router is
+  then responsible for either:
+  - Delivering packet to destination
+  - Forwarding packet to another router for delivery</Text>
+        </Document>
+        <Document ID="26">
+            <Title>Network Layer Encapsulation</Title>
+            <Text>Generates IP Packets (Lecture 3 - slide 8)</Text>
+        </Document>
+        <Document ID="19">
+            <Title>UDP - User Datagram Protocol</Title>
+            <Text>- Simple extension of IP to the Application Layer
+  - Best Effort
+  - Error-prone
+  - Packet (message) oriented
+- UDP Header
+
+| &lt;---------- 32 Bits ---------&gt; |
+| :---------: | :--------------: |
+| Source Port | Destination Port |
+|    Length   |     Checksum     |
+
+
+- Application divides data into datagrams
+- No delay – datagrams are transmitted as soon as possible
+- Delivery may be out of order
+- No notification of lost datagrams</Text>
+        </Document>
+        <Document ID="41">
+            <Title>Q5 - VLSM -</Title>
+            <Text>_Same as other VLSM tests - 15 marks_
+
+**Remember:**
+
+| Network Bits | Subnet Mask | Addresses | Usable Hosts | Network         |
+| :----------- | :---------- | :-------- | :----------- | :-------------- |
+| 2-bits       | /30         | 4         | 2            | 255.255.255.252 |
+| 3-bits       | /29         | 8         | 6            | 255.255.255.248 |
+| 4-bits       | /28         | 16        | 14           | 255.255.255.240 |
+| 5-bits       | /27         | 32        | 30           | 255.255.255.224 |
+| 6-bits       | /26         | 64        | 62           | 255.255.255.192 |
+| 7-bits       | /25         | 128       | 126          | 255.255.255.128 |
+| 8-bits       | /24         | 256       | 254          | 255.255.255.0   |
+| 9-bits       | /23         | 512       | 510          | 255.255.254.0   |
+| 10-bits      | /22         | 1024      | 1022         | 255.255.248.0   |
+| 11-bits      | /21         | 2048      | 2046         | 255.255.240.0   |
+| 12-bits      | /20         | 4096      | 4094         | 255.255.224.0   |
+| 13-bits      | /19         | 8192      | 8190         | 255.255.192.0   |
+| 14-bits      | /18         | 16384     | 16382        | 255.255.128.0   |
+| 15-bits      | /17         | 32768     | 32766        | 255.255.0.0     |</Text>
+        </Document>
+        <Document ID="34">
+            <Title>Simplifying Routing Decisions</Title>
+            <Text>To simplify routing decisions
+- Subnets are a range of consecutive IP Addresses
+- All addresses in a subnet match a simple to check rule
+- Routing decisinos based on packet destination subnet</Text>
+        </Document>
+        <Document ID="27">
+            <Title>Header Fields</Title>
+            <Text>**Ver (4bits)**
+– protocol version eg IPv4, IPv6
+
+**IHL(4bits)**
+– Internet Header Length in 32 bit words
+
+**Service Type (8bits)**
+– QoS, the field describes a level of throughput priority a router should use in
+  processing a packet eg a packet containing IP voice data gets precedence over
+  a packet containing a HTTP request
+
+**Packet length**
+– total length of packet, including header
+
+**Identification**
+– a sequence number used on reassembling fragments into packets
+
+**Flags**
+– More Flag is used in fragmentation and reassembly
+
+**Fragment Offset**
+– a router may have to fragment a packet when forwarding it from one medium to
+  another medium that has a smaller MTU. Offset and More Flag used in
+  reassembling packet from fragments at the destination
+
+**Time to Live (TTL)**
+– maximum hops a packet can take before it is considered undeliverable. Each
+  router decrements 1, when TTL = 0 packet dropped
+
+**Protocol**
+– upper level protocol segment encapsulated eg TCP, UDP
+
+**Options**
+– special routing services, rarely used
+
+**Padding**
+– used to ensure header ends on a 32 bit boundary</Text>
+        </Document>
+        <Document ID="42">
+            <Title>Q6 - Spanning Tree Protocol -</Title>
+            <Text>_Understand the Process - 10 marks_</Text>
+        </Document>
+        <Document ID="35">
+            <Title>Dividing IP Addresses</Title>
+            <Text>- IP Addresses divided in two
+  - Network Portion
+  - Host Portion
+- Network Portion
+  - Most significant (left-most) bits of IP Address
+  - Defines the network to which the IP Address belongs
+  - All IP Addresses with an equal Network Portion are in the same subnet
+- Host Portion
+  - Least significant (right-most) bits of IP Address
+  - Defines a host within a subnet
+- Network Portion bits + Host Portion bits = 32 (length of IP Address)</Text>
+        </Document>
+        <Document ID="28">
+            <Title>IP Addresses</Title>
+        </Document>
+        <Document ID="43">
+            <Title>Redundancy at Layer 2</Title>
+            <Text>- **Redundancy** in networks is critical, it allows networks to be **fault
+  tolerant**
+
+- The **failure** of a single link, interface, or network device can cause
+  **downtime**
+
+- **Redundant topologies** protect against network downtime, by eliminating
+  outages caused by a **single point** of failure
+
+- Balance between the cost of redundancy with the need for network availability
+  (cost of failure)
+
+- Five Nines uptime – 99.999 % - 5.25 mins down time per year</Text>
+        </Document>
+        <Document ID="50">
+            <Title>Spanning Tree Protocol (STP) 1990</Title>
+            <Text>- STP ensures that there is only one logical path between all destinations on
+  the network by intentionally blocking redundant paths that could cause a loop
+  (loop-free path).
+
+- A port is considered blocked when network traffic is prevented from entering
+  or leaving that port.
+
+- The physical paths still exist to provide redundancy, but paths are disabled
+  to prevent the loops from occurring.
+
+- The switches running STP are able to compensate for failures by dynamically
+  unblocking the previously blocked ports and permitting traffic to traverse
+  the alternate paths.</Text>
+        </Document>
+        <Document ID="36">
+            <Title>Subnet Masks</Title>
+            <Text>- The subnet mask is used to define which bits of an IP Address make the network
+  portion and which bits make the host portion
+- Subnet Mask = 32 bits
+  - 1-bit specifies that this bit in the IP Address is part of the
+    Network Address
+  - 0-bit specifies that this bit in the IP Address is part of the
+    Host Identifier
+- Since network = left-most **AND** host = right-most
+- Subnet Mask **MUST** consist of a string of ‘1’ bits followed by a string of
+  ‘0’ bits **ONLY**
+
+** Dotted Decimal and Binary Representation **
+
+| IPv4 Addresses
+| :------: | :------: | :------: | :------: |
+|    192   |    168   |    10    |    1     |
+| 11000000 | 11000000 | 11000000 | 11000000 |
+
+The computer using this IP address is on network
+               192.168.10.0</Text>
+        </Document>
+        <Document ID="29">
+            <Title>IP is not names</Title>
+            <Text>Addresses like:
+- [www.swin.edu.au](www.swin.edu.au)
+- [mail.swin.edu.au](mail.swin.edu.au)
+
+Are not IP addresses
+
+The Internet uses a naming system (DNS – Domain Name System) to translate names
+to addresses</Text>
+        </Document>
+        <Document ID="44">
+            <Title>Redundant Topologies</Title>
+            <Text>- A **network of roads** is a global example of a redundant topology.
+
+- If one road is closed for repair there is likely an **alternate** route to the
+  destination</Text>
+        </Document>
+        <Document ID="51">
+            <Title>Spanning Tree Algorithm (STA)</Title>
+            <Text>STP uses the Spanning Tree Algorithm (STA) to determine which switch ports on a
+network need to be blocked to prevent loops from occurring.
+
+STA designates a single switch as the root bridge and uses it as the reference
+point for all STA calculations.
+
+Three steps:
+- Elect one root bridge
+- Elect the root port on all non-root bridges
+- Elect the designated and non-designated ports</Text>
+        </Document>
+        <Document ID="37">
+            <Title>Adress Types</Title>
+            <Text>Network address
+- Identifies the network
+- All host bits set to 0
+
+| Network  |          |          |   Host   |
+| :------: | :------: | :------: | :------: |
+|    10    |     0    |     0    |     0    |
+| 00001010 | 00000000 | 00000000 | 00000000 |
+
+Broadcast address
+- Used to send data to all hosts in the network
+- All host bits set to 1
+
+| Network  |          |          |   Host   |
+| :------: | :------: | :------: | :------: |
+|    10    |     0    |     0    |    255   |
+| 11111111 | 00000000 | 00000000 | 11111111 |
+
+Host address
+- Identifies a end device in the network
+- At least one of the host bits must be set to 1
+
+| Network  |          |          |   Host   |
+| :------: | :------: | :------: | :------: |
+|    10    |     0    |     0    |     0    |
+| 00001010 | 00000000 | 00000000 | 00000001 |</Text>
+        </Document>
+        <Document ID="45">
+            <Title>Redundant Design</Title>
+            <Text>- Each Access Layer Switch is connected to 2 Distribution Layer Switches
+- Each Distribution Layer Switch is connected to 2 Core Layer Switches</Text>
+        </Document>
+        <Document ID="52">
+            <Title>The Root Bridge - Election Process</Title>
+            <Text>All switches in the broadcast domain participate in the election process:
+
+- After a switch boots, it sends out BPDU frames containing the switch BID and
+  the root ID every 2 seconds.
+  - BID is made up of a priority value, (an extended system ID), and the MAC
+    address of the switch.
+
+- Initially, each switch identifies itself (the root ID matches the local BID)
+  as the root bridge after boot up,
+
+As the switches forward their BPDU frames, adjacent switches read the Root ID
+information from the BPDU frame:
+
+- If the root ID from the BPDU received is lower than the root ID on the
+  receiving switch, the receiving switch updates its root ID identifying the
+  adjacent switch as the root bridge.
+
+- The switch then forwards new BPDU frames with the lower root ID to the other
+  adjacent switches.
+
+- Eventually, the switch with the lowest BID ends up being identified as the
+  root bridge for the spanning-tree instance.</Text>
+        </Document>
+        <Document ID="38">
+            <Title>Reversed IP Address Subnets</Title>
+            <Text>| Class | Unusable Networks | Private Networks        |
+| ----- | ----------------- | ----------------------- |
+|   A   | 0.0.0.0           | 10.0.0.0                |
+|       | 127.0.0.0         |                         |
+|   B   |                   | 172.16.0.0 - 172.31.0.0 |
+|   C   |                   | 192.168.0.0 -           |
+
+0.0.0.0 – Defines entire network and cannot be used
+
+127.0.0.0 – Reserved to define the local host
+
+Private networks:
+- Can be used in any network
+- Internet routers guaranteed not to route any packets with these IP addresses</Text>
+        </Document>
+        <Document ID="53">
+            <Title>Bridge ID (BID)</Title>
+            <Text>| BID - 8 Bytes    |
+| :--------------: | :-------------------------: |
+| Bridge Priority  |              MAC            |
+| &lt;--------------&gt; | &lt;-------------------------&gt; |
+|      2 Bytes     |           6 Bytes           |
+| Range: 0-65, 535 | From Backplane / Supervisor |
+| Default: 32, 768 |                             |
+
+- Bridge ID (BID) is used to identify each bridge/switch.
+- The BID is used in determining the centre of the network, in respect to STP,
+  known as the root bridge.
+- Consists of two components:
+  - A 2-byte Bridge Priority: Cisco switch defaults to 32,768 (decimal)
+  - A 6-byte MAC address (hexadecimal)
+- BID is used to elect a root bridge
+- **Lowest Bridge ID is the root.**
+- If all devices have the same priority, the bridge with the lowest MAC address
+  becomes the root bridge.</Text>
+        </Document>
+        <Document ID="46">
+            <Title>Issues with Redundancy</Title>
+        </Document>
+        <Document ID="39">
+            <Title>Addressing - Types of Communication</Title>
+            <Text>** Unicast **
+
+- The process of sending a packet from one host to an individual host
+- Used for normal host-to-host communication in a network
+
+
+** Broadcast **
+
+The process of sending a packet from one host to all hosts in the network
+
+Used for:
+- the location of special services/devices for which the address is not known;
+  e.g. DHCP service
+- Exchanging routing information by routing protocols
+
+Broadcast Domain
+- Routers do not forward broadcasts.
+- Network 172.16.4.0 is referred to as a broadcast domain with the router
+  forming the boundary of the broadcast domain.
+
+
+** Multicast **
+
+The process of sending a packet from one host to a selected group of hosts
+
+Used for:
+- Video and audio broadcasts
+- Routing information exchange by some routing protocols
+- Distribution of software
+- News feeds
+
+Hosts that want to receive a particular multicast data are called
+** multicast clients **
+
+These clients use a client program to subscribe to the **multicast group**
+
+Each multicast group is represented by a single IPv4 multicast destination
+address</Text>
+        </Document>
+    </Documents>
+</SearchIndexes>
