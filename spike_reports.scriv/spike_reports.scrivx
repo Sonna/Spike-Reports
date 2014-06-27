@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ScrivenerProject Version="1.0" Creator="SCRMAC-2.5-25239" Modified="2014-06-27 19:18:38 +1000">
+<ScrivenerProject Version="1.0" Creator="SCRMAC-2.5-25239" Modified="2014-06-27 19:31:38 +1000">
     <Binder>
         <BinderItem ID="0" Type="DraftFolder" Created="2014-06-26 11:41:27 +1000" Modified="2014-06-26 11:41:27 +1000">
             <Title>Draft</Title>
@@ -37,8 +37,8 @@
                                 <TextSelection>0,0</TextSelection>
                             </TextSettings>
                             <Children>
-                                <BinderItem ID="6" Type="Text" Created="2014-06-27 19:17:37 +1000" Modified="2014-06-27 19:17:37 +1000">
-                                    <Title>Meta-Data</Title>
+                                <BinderItem ID="6" Type="Text" Created="2014-06-27 19:17:37 +1000" Modified="2014-06-27 19:31:38 +1000">
+                                    <Title>Spike Plan</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                         <NotesTextSelection>0,0</NotesTextSelection>
@@ -130,7 +130,7 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2014-06-26 11:41:26 +1000" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Midnight" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="25" Characters="121" Date="2014-06-27 19:16:31 +1000"></PreviousSession>
+        <PreviousSession Words="39" Characters="197" Date="2014-06-27 19:30:22 +1000"></PreviousSession>
     </ProjectTargets>
     <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>
