@@ -37,13 +37,15 @@ BIB = /Users/Sonna/Documents/bibs/References.bib
 CSL = apsa
 
 
+DOCX=$(OUT:.md=.docx)
 PDFS=$(OUT:.md=.pdf)
 HTML=$(OUT:.md=.html)
 TEX=$(OUT:.md=.tex)
 
 
-all:  $(PDFS) $(HTML) $(TEX)
+all:  $(DOCX) $(PDFS) $(HTML) $(TEX)
 
+docx:	clean $(DOCX)
 pdf:	clean $(PDFS)
 html:	clean $(HTML)
 tex:	clean $(TEX)
@@ -57,7 +59,11 @@ $(OUT_DIR)/%.tex:	$(IN_DIR)/%.md
 $(OUT_DIR)/%.pdf:	$(IN_DIR)/%.md
 	pandoc -r $(MARKDOWN) -s -S --latex-engine=/usr/texbin/pdflatex --filter pandoc-citeproc --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
 
+$(OUT_DIR)/%.docx:	$(IN_DIR)/%.md
+	pandoc -r $(MARKDOWN) -s -S --latex-engine=/usr/texbin/pdflatex --filter pandoc-citeproc --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
+
 clean:
 	rm -f $(OUT_DIR)/*.html \
       $(OUT_DIR)/*.pdf \
-      $(OUT_DIR)/*.tex
+      $(OUT_DIR)/*.tex \
+      $(OUT_DIR)/*.docx
