@@ -53,4 +53,6 @@ output/%.pdf:	markdown/%.md
 	pandoc -r $(MARKDOWN) -s -S --latex-engine=/usr/texbin/pdflatex --filter pandoc-citeproc --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
 
 clean:
-	rm -f *.html *.pdf *.tex
+	rm -f output/*.html \
+      output/*.pdf \
+      output/*.tex
