@@ -40,6 +40,16 @@ CSL = csl/harvard-swinburne-university-of-technology.csl
 TEMPLATE = templates/pandoc_latex.template
 
 
+OPTIONS = --latex-engine=/usr/texbin/pdflatex \
+          --template=$(TEMPLATE) \
+          --filter pandoc-citeproc \
+          --csl=$(CSL) \
+          --bibliography=$(BIB) \
+          --mathjax \
+          --number-sections \
+          --table-of-contents
+
+
 DOCX=$(OUT:.md=.docx)
 PDFS=$(OUT:.md=.pdf)
 HTML=$(OUT:.md=.html)
@@ -54,16 +64,16 @@ html:	clean $(HTML)
 tex:	clean $(TEX)
 
 $(OUT_DIR)/%.html:	$(IN_DIR)/%.md
-	pandoc -r $(MARKDOWN) -w html -S --template=templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css --filter pandoc-citeproc --csl=$(CSL) --bibliography=$(BIB) --mathjax --number-sections --table-of-contents -o $@ $<
+	pandoc -r $(MARKDOWN) -w html -S $(OPTIONS) --template=templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css -o $@ $<
 
 $(OUT_DIR)/%.tex:	$(IN_DIR)/%.md
-	pandoc -r $(MARKDOWN) -w latex -s -S --latex-engine=/usr/texbin/pdflatex --template=$(TEMPLATE) --filter pandoc-citeproc --csl=$(CSL) --bibliography=$(BIB) --mathjax --number-sections --table-of-contents -o $@ $<
+	pandoc -r $(MARKDOWN) -w latex -s -S $(OPTIONS) -o $@ $<
 
 $(OUT_DIR)/%.pdf:	$(IN_DIR)/%.md
-	pandoc -r $(MARKDOWN) -s -S --latex-engine=/usr/texbin/pdflatex --template=$(TEMPLATE) --filter pandoc-citeproc --csl=$(CSL) --bibliography=$(BIB) --mathjax --number-sections --table-of-contents -o $@ $<
+	pandoc -r $(MARKDOWN) -s -S $(OPTIONS) -o $@ $<
 
 $(OUT_DIR)/%.docx:	$(IN_DIR)/%.md
-	pandoc -r $(MARKDOWN) -s -S --latex-engine=/usr/texbin/pdflatex --template=$(TEMPLATE) --filter pandoc-citeproc --csl=$(CSL) --bibliography=$(BIB) --mathjax --number-sections --table-of-contents -o $@ $<
+	pandoc -r $(MARKDOWN) -s -S $(OPTIONS) -o $@ $<
 
 clean:
 	rm -f $(OUT_DIR)/*.html \
