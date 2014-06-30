@@ -20,7 +20,12 @@ MEXT = md
 MARKDOWN = markdown+multiline_tables+grid_tables+table_captions+yaml_metadata_block+definition_lists+raw_tex+footnotes+citations
 
 ## All markdown files in the working directory
-SRC = $(wildcard markdown/*.$(MEXT))
+IN_DIR = markdown
+SRC = $(wildcard $(IN_DIR)/*.$(MEXT))
+
+OUT_DIR = output
+SRC_FILENAME = $(notdir $(SRC))
+OUT = $(OUT_DIR)/$(SRC_FILENAME)
 
 ## Location of Pandoc support files.
 PREFIX = /Users/Sonna/.pandoc
@@ -32,9 +37,9 @@ BIB = /Users/Sonna/Documents/bibs/References.bib
 CSL = apsa
 
 
-PDFS = output/spike_reports.pdf
-HTML = output/spike_reports.html
-TEX = output/spike_reports.tex
+PDFS=$(OUT:.md=.pdf)
+HTML=$(OUT:.md=.html)
+TEX=$(OUT:.md=.tex)
 
 
 all:  $(PDFS) $(HTML) $(TEX)
@@ -43,16 +48,16 @@ pdf:	clean $(PDFS)
 html:	clean $(HTML)
 tex:	clean $(TEX)
 
-ouput/%.html:	markdown/%.md
+$(OUT_DIR)/%.html:	$(IN_DIR)/%.md
 	pandoc -r $(MARKDOWN) -w html -S --template=$(PREFIX)/templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css --filter pandoc-citeproc --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
 
-output/%.tex:	markdown/%.md
+$(OUT_DIR)/%.tex:	$(IN_DIR)/%.md
 	pandoc -r $(MARKDOWN) -w latex -s -S --latex-engine=/usr/texbin/pdflatex --filter pandoc-citeproc --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
 
-output/%.pdf:	markdown/%.md
+$(OUT_DIR)/%.pdf:	$(IN_DIR)/%.md
 	pandoc -r $(MARKDOWN) -s -S --latex-engine=/usr/texbin/pdflatex --filter pandoc-citeproc --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
 
 clean:
-	rm -f output/*.html \
-      output/*.pdf \
-      output/*.tex
+	rm -f $(OUT_DIR)/*.html \
+      $(OUT_DIR)/*.pdf \
+      $(OUT_DIR)/*.tex
