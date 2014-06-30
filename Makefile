@@ -37,7 +37,7 @@ BIB = /Users/Sonna/Documents/bibs/References.bib
 CSL = csl/harvard-swinburne-university-of-technology.csl
 
 ## LaTeX Template
-TEMPLATE = latex_templates/pandoc_template.latex
+TEMPLATE = templates/pandoc_latex.template
 
 
 DOCX=$(OUT:.md=.docx)
