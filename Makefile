@@ -32,9 +32,9 @@ BIB = /Users/Sonna/Documents/bibs/References.bib
 CSL = apsa
 
 
-PDFS=$(SRC:.md=.pdf)
-HTML=$(SRC:.md=.html)
-TEX=$(SRC:.md=.tex)
+PDFS = output/spike_reports.pdf
+HTML = output/spike_reports.html
+TEX = output/spike_reports.tex
 
 
 all:  $(PDFS) $(HTML) $(TEX)
@@ -43,13 +43,13 @@ pdf:	clean $(PDFS)
 html:	clean $(HTML)
 tex:	clean $(TEX)
 
-%.html: %.md
+ouput/%.html:	markdown/%.md
 	pandoc -r $(MARKDOWN) -w html -S --template=$(PREFIX)/templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css --filter pandoc-citeproc --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
 
-%.tex:	%.md
+output/%.tex:	markdown/%.md
 	pandoc -r $(MARKDOWN) -w latex -s -S --latex-engine=/usr/texbin/pdflatex --filter pandoc-citeproc --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
 
-%.pdf:	%.md
+output/%.pdf:	markdown/%.md
 	pandoc -r $(MARKDOWN) -s -S --latex-engine=/usr/texbin/pdflatex --filter pandoc-citeproc --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
 
 clean:
