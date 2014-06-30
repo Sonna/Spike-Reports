@@ -54,16 +54,16 @@ html:	clean $(HTML)
 tex:	clean $(TEX)
 
 $(OUT_DIR)/%.html:	$(IN_DIR)/%.md
-	pandoc -r $(MARKDOWN) -w html -S --template=templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css --filter pandoc-citeproc --csl=$(CSL) --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
+	pandoc -r $(MARKDOWN) -w html -S --template=templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css --filter pandoc-citeproc --csl=$(CSL) --bibliography=$(BIB) --mathjax --number-sections --table-of-contents -o $@ $<
 
 $(OUT_DIR)/%.tex:	$(IN_DIR)/%.md
-	pandoc -r $(MARKDOWN) -w latex -s -S --latex-engine=/usr/texbin/pdflatex --template=$(TEMPLATE) --filter pandoc-citeproc --csl=$(CSL) --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
+	pandoc -r $(MARKDOWN) -w latex -s -S --latex-engine=/usr/texbin/pdflatex --template=$(TEMPLATE) --filter pandoc-citeproc --csl=$(CSL) --bibliography=$(BIB) --mathjax --number-sections --table-of-contents -o $@ $<
 
 $(OUT_DIR)/%.pdf:	$(IN_DIR)/%.md
-	pandoc -r $(MARKDOWN) -s -S --latex-engine=/usr/texbin/pdflatex --template=$(TEMPLATE) --filter pandoc-citeproc --csl=$(CSL) --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
+	pandoc -r $(MARKDOWN) -s -S --latex-engine=/usr/texbin/pdflatex --template=$(TEMPLATE) --filter pandoc-citeproc --csl=$(CSL) --bibliography=$(BIB) --mathjax --number-sections --table-of-contents -o $@ $<
 
 $(OUT_DIR)/%.docx:	$(IN_DIR)/%.md
-	pandoc -r $(MARKDOWN) -s -S --latex-engine=/usr/texbin/pdflatex --template=$(TEMPLATE) --filter pandoc-citeproc --csl=$(CSL) --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
+	pandoc -r $(MARKDOWN) -s -S --latex-engine=/usr/texbin/pdflatex --template=$(TEMPLATE) --filter pandoc-citeproc --csl=$(CSL) --bibliography=$(BIB) --mathjax --number-sections --table-of-contents -o $@ $<
 
 clean:
 	rm -f $(OUT_DIR)/*.html \
