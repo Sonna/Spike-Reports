@@ -20,7 +20,7 @@ MEXT = md
 MARKDOWN = markdown+multiline_tables+grid_tables+table_captions+yaml_metadata_block+definition_lists+raw_tex+footnotes+citations
 
 ## All markdown files in the working directory
-SRC = $(wildcard *.$(MEXT))
+SRC = $(wildcard markdown/*.$(MEXT))
 
 ## Location of Pandoc support files.
 PREFIX = /Users/Sonna/.pandoc
