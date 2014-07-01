@@ -19,7 +19,7 @@ COMPILER = pandoc
 MEXT = md
 
 ## Pandoc extensions
-MARKDOWN = markdown+multiline_tables+grid_tables+table_captions+yaml_metadata_block+definition_lists+raw_tex+footnotes+citations
+PREFLAGS = -r markdown+multiline_tables+grid_tables+table_captions+yaml_metadata_block+definition_lists+raw_tex+footnotes+citations
 
 ## All markdown files in the working directory
 IN_DIR = markdown
@@ -69,16 +69,16 @@ $(OUT_DIR):
 	mkdir $(OUT_DIR)
 
 $(OUT_DIR)/%.html:	$(IN_DIR)/%.md
-	$(COMPILER) -r $(MARKDOWN) -w html -S $(OPTIONS) --template=templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css -o $@ $<
+	$(COMPILER) $(PREFLAGS) -w html -S $(OPTIONS) --template=templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css -o $@ $<
 
 $(OUT_DIR)/%.tex:	$(IN_DIR)/%.md
-	$(COMPILER) -r $(MARKDOWN) -w latex -s -S $(OPTIONS) -o $@ $<
+	$(COMPILER) $(PREFLAGS) -w latex -s -S $(OPTIONS) -o $@ $<
 
 $(OUT_DIR)/%.pdf:	$(IN_DIR)/%.md
-	$(COMPILER) -r $(MARKDOWN) -s -S $(OPTIONS) -o $@ $<
+	$(COMPILER) $(PREFLAGS) -s -S $(OPTIONS) -o $@ $<
 
 $(OUT_DIR)/%.docx:	$(IN_DIR)/%.md
-	$(COMPILER) -r $(MARKDOWN) -s -S $(OPTIONS) -o $@ $<
+	$(COMPILER) $(PREFLAGS) -s -S $(OPTIONS) -o $@ $<
 
 clean:
 	rm -f $(OUT_DIR)/*.html \
