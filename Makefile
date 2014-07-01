@@ -65,6 +65,7 @@ POSTFLAGS = --smart \
             --csl=$(CSL) \
             --bibliography=$(BIB) \
             --mathjax \
+            --chapters \
             --number-sections \
             --table-of-contents
 
