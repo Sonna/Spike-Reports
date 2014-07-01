@@ -35,6 +35,7 @@ PANDOC_EXTENSIONS = markdown \
                     multiline_tables \
                     grid_tables \
                     table_captions \
+                    pandoc_title_block \
                     yaml_metadata_block \
                     definition_lists \
                     raw_tex \
@@ -58,7 +59,8 @@ extensions:= $(subst $(space),$(plus),$(PANDOC_EXTENSIONS))
 
 PREFLAGS = -r $(extensions)
 
-POSTFLAGS = --smart \
+POSTFLAGS = --standalone \
+            --smart \
             --latex-engine=/usr/texbin/pdflatex \
             --template=$(TEMPLATE) \
             --filter pandoc-citeproc \
