@@ -47,3 +47,5 @@ Example:
 - Create scripts to populate the database tables with initial test data
 - Create scripts to tear down database
 - Create batch/makefile/build script with two targets, one to construct and populate (setup) the database, and the other to tear down the database.
+
+\clearpage

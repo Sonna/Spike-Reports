@@ -46,3 +46,5 @@ _#### List out the issues and risks that you have been unable to resolve at the 
 _### Often based on any open issues/risks Identified. You may state that another spike is required for the team to resolve new issues identified (or) indicate that this spike has increased the teams confidence in XYZ and should move on._
 
 - e.g. Recommendation X:
+
+\clearpage

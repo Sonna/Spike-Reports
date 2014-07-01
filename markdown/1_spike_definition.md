@@ -32,3 +32,5 @@
 
 
 [^SwinBrain]: [@SwinBrain:2007] http://swinbrain.ict.swin.edu.au/wiki/Spike
+
+\clearpage
