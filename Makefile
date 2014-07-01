@@ -66,6 +66,9 @@ pdf:	clean $(PDFS)
 html:	clean $(HTML)
 tex:	clean $(TEX)
 
+$(OUT_DIR):
+	mkdir $(OUT_DIR)
+
 $(OUT_DIR)/%.html:	$(IN_DIR)/%.md
 	$(CC) -r $(MARKDOWN) -w html -S $(OPTIONS) --template=templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css -o $@ $<
 
