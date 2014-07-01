@@ -20,6 +20,7 @@
 ##   - Location of Citation Style Language (CSL) stylesheet
 ##   - Location of default LaTeX Template
 ##
+PROJECT_NAME = spikes
 
 SOURCE_DIRECTORY = markdown
 TARGET_DIRECTORY = output
