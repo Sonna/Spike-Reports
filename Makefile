@@ -27,7 +27,8 @@ TARGET_DIRECTORY = output
 
 BIB = /Users/Sonna/Documents/bibs/References.bib
 CSL = csl/harvard-swinburne-university-of-technology.csl
-TEMPLATE = templates/main.tex
+# TEMPLATE = templates/main.tex
+TEMPLATE = templates/default_latex.template
 
 COMPILER = pandoc
 
@@ -67,7 +68,6 @@ POSTFLAGS = --standalone \
             --csl=$(CSL) \
             --bibliography=$(BIB) \
             --mathjax \
-            --chapters \
             --number-sections \
             --table-of-contents
 
