@@ -94,7 +94,7 @@ $(OUT_DIR)/%.html:	$(IN_DIR)/%.md
 	$(COMPILER) $(PREFLAGS) -w html $(POSTFLAGS) --template=templates/html.template --css=/Users/Sonna/.pandoc/marked/kultiad-serif.css -o $@ $<
 
 $(OUT_DIR)/%.tex:	$(IN_DIR)/%.md
-	$(COMPILER) $(PREFLAGS) -w latex $(POSTFLAGS) -o $@ $<
+	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $<
 
 $(OUT_DIR)/%.pdf:	$(IN_DIR)/%.md
 	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $<
