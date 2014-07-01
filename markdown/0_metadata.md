@@ -10,6 +10,5 @@ header-includes:
     - \fancyfoot[CO,CE]{ }
     - \fancyfoot[LO,RE]{Alex Sonneveld 7193475}
     - \fancyfoot[LE,RO]{\thepage}
-abstract: This is a pandoc test . . .
 ...
 
