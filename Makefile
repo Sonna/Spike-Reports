@@ -69,7 +69,8 @@ POSTFLAGS = --smart \
             --table-of-contents
 
 ## All markdown files in the source directory
-SRC = $(wildcard $(SOURCE_DIRECTORY)**/*.md)
+# SRC = $(wildcard $(SOURCE_DIRECTORY)**/*.md)
+SRC := $(shell find $(SOURCE_DIRECTORY) -name "*.md")
 
 FILENAME = $(TARGET_DIRECTORY)/$(PROJECT_NAME)
 
