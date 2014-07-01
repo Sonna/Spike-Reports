@@ -93,13 +93,7 @@ $(TARGET_DIRECTORY):
 $(HTML):	$(SRC)
 	$(COMPILER) $(PREFLAGS) -w html $(POSTFLAGS) --template=templates/html.template --css=/Users/Sonna/.pandoc/marked/kultiad-serif.css -o $@ $<
 
-$(TEX):	$(SRC)
-	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $<
-
-$(PDFS):	$(SRC)
-	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $<
-
-$(DOCX):	$(SRC)
+$(TEX) $(PDFS) $(DOCX):	$(SRC)
 	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $<
 
 clean:
