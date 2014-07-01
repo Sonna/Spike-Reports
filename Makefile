@@ -45,6 +45,16 @@ extensions:= $(subst $(space),$(plus),$(PANDOC_EXTENSIONS))
 
 PREFLAGS = -r $(extensions)
 
+POSTFLAGS = --smart \
+            --latex-engine=/usr/texbin/pdflatex \
+            --template=$(TEMPLATE) \
+            --filter pandoc-citeproc \
+            --csl=$(CSL) \
+            --bibliography=$(BIB) \
+            --mathjax \
+            --number-sections \
+            --table-of-contents
+
 ## All markdown files in the working directory
 IN_DIR = markdown
 SRC = $(wildcard $(IN_DIR)/*.$(MEXT))
@@ -64,16 +74,6 @@ CSL = csl/harvard-swinburne-university-of-technology.csl
 TEMPLATE = frontmatter/main.tex
 
 
-OPTIONS = --latex-engine=/usr/texbin/pdflatex \
-          --template=$(TEMPLATE) \
-          --filter pandoc-citeproc \
-          --csl=$(CSL) \
-          --bibliography=$(BIB) \
-          --mathjax \
-          --number-sections \
-          --table-of-contents
-
-
 DOCX=$(OUT:.md=.docx)
 PDFS=$(OUT:.md=.pdf)
 HTML=$(OUT:.md=.html)
@@ -91,16 +91,16 @@ $(OUT_DIR):
 	mkdir $(OUT_DIR)
 
 $(OUT_DIR)/%.html:	$(IN_DIR)/%.md
-	$(COMPILER) $(PREFLAGS) -w html -S $(OPTIONS) --template=templates/html.template --css=/Users/Sonna/.pandoc/marked/kultiad-serif.css -o $@ $<
+	$(COMPILER) $(PREFLAGS) -w html $(POSTFLAGS) --template=templates/html.template --css=/Users/Sonna/.pandoc/marked/kultiad-serif.css -o $@ $<
 
 $(OUT_DIR)/%.tex:	$(IN_DIR)/%.md
-	$(COMPILER) $(PREFLAGS) -w latex -s -S $(OPTIONS) -o $@ $<
+	$(COMPILER) $(PREFLAGS) -w latex $(POSTFLAGS) -o $@ $<
 
 $(OUT_DIR)/%.pdf:	$(IN_DIR)/%.md
-	$(COMPILER) $(PREFLAGS) -s -S $(OPTIONS) -o $@ $<
+	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $<
 
 $(OUT_DIR)/%.docx:	$(IN_DIR)/%.md
-	$(COMPILER) $(PREFLAGS) -s -S $(OPTIONS) -o $@ $<
+	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $<
 
 clean:
 	rm -f $(OUT_DIR)/*.html \
