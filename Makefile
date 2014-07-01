@@ -30,10 +30,6 @@ TEMPLATE = frontmatter/main.tex
 
 COMPILER = pandoc
 
-## Markdown extension (e.g. md, markdown, mdown).
-MEXT = md
-
-## Pandoc extensions
 PANDOC_EXTENSIONS = markdown \
                     multiline_tables \
                     grid_tables \
@@ -58,6 +54,7 @@ empty:=
 space:= $(empty) $(empty)
 extensions:= $(subst $(space),$(plus),$(PANDOC_EXTENSIONS))
 
+
 PREFLAGS = -r $(extensions)
 
 POSTFLAGS = --smart \
@@ -72,7 +69,7 @@ POSTFLAGS = --smart \
 
 ## All markdown files in the working directory
 IN_DIR = markdown
-SRC = $(wildcard $(IN_DIR)/*.$(MEXT))
+SRC = $(wildcard $(IN_DIR)/*.md
 
 OUT_DIR = output
 SRC_FILENAME = $(notdir $(SRC))
