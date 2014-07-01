@@ -19,7 +19,31 @@ COMPILER = pandoc
 MEXT = md
 
 ## Pandoc extensions
-PREFLAGS = -r markdown+multiline_tables+grid_tables+table_captions+yaml_metadata_block+definition_lists+raw_tex+footnotes+citations
+PANDOC_EXTENSIONS = markdown \
+                    multiline_tables \
+                    grid_tables \
+                    table_captions \
+                    yaml_metadata_block \
+                    definition_lists \
+                    raw_tex \
+                    footnotes \
+                    citations
+
+# Substring from array method. This methods finds the spaces between words
+# and then subsitutes them with a new value, often commas between words.
+#
+#   e.g.
+#
+#     word1 word2 word3 -> word1, word2, word3
+#
+# Reference:
+# - http://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_8.html
+plus:=+
+empty:=
+space:= $(empty) $(empty)
+extensions:= $(subst $(space),$(plus),$(PANDOC_EXTENSIONS))
+
+PREFLAGS = -r $(extensions)
 
 ## All markdown files in the working directory
 IN_DIR = markdown
