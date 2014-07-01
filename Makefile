@@ -71,11 +71,12 @@ POSTFLAGS = --smart \
 ## All markdown files in the source directory
 SRC = $(wildcard $(SOURCE_DIRECTORY)**/*.md)
 
+FILENAME = $(TARGET_DIRECTORY)/$(PROJECT_NAME)
 
-DOCX = $(TARGET_DIRECTORY)/$(PROJECT_NAME).docx
-PDFS = $(TARGET_DIRECTORY)/$(PROJECT_NAME).pdf
-HTML = $(TARGET_DIRECTORY)/$(PROJECT_NAME).html
-TEX = $(TARGET_DIRECTORY)/$(PROJECT_NAME).tex
+DOCX = $(FILENAME:=.docx)
+PDFS = $(FILENAME:=.pdf)
+HTML = $(FILENAME:=.html)
+TEX  = $(FILENAME:=.tex)
 
 
 all:  $(DOCX) $(PDFS) $(HTML) $(TEX)
