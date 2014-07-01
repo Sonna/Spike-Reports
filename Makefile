@@ -13,6 +13,21 @@
 ##  in your working directory. Make sure you do not have files in these
 ##  formats that you want to keep!
 
+## Requires:
+##   - Location of source files to convert
+##   - Location of source files to convert
+##   - Location of your working bibliography file
+##   - Location of Citation Style Language (CSL) stylesheet
+##   - Location of default LaTeX Template
+##
+
+SOURCE_DIRECTORY = markdown
+TARGET_DIRECTORY = output
+
+BIB = /Users/Sonna/Documents/bibs/References.bib
+CSL = csl/harvard-swinburne-university-of-technology.csl
+TEMPLATE = frontmatter/main.tex
+
 COMPILER = pandoc
 
 ## Markdown extension (e.g. md, markdown, mdown).
@@ -62,16 +77,6 @@ SRC = $(wildcard $(IN_DIR)/*.$(MEXT))
 OUT_DIR = output
 SRC_FILENAME = $(notdir $(SRC))
 OUT = $(OUT_DIR)/$(SRC_FILENAME)
-
-
-## Location of your working bibliography file
-BIB = /Users/Sonna/Documents/bibs/References.bib
-
-## CSL stylesheet (located in the csl folder of the PREFIX directory).
-CSL = csl/harvard-swinburne-university-of-technology.csl
-
-## LaTeX Template
-TEMPLATE = frontmatter/main.tex
 
 
 DOCX=$(OUT:.md=.docx)
