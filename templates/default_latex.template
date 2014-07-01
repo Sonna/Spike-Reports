@@ -1,4 +1,20 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+% filename: default_latex.template
+
+\documentclass[
+$if(fontsize)$
+  $fontsize$,
+$endif$
+$if(lang)$
+  $lang$,
+$endif$
+$if(papersize)$
+  $papersize$,
+$endif$
+$for(classoption)$
+  $classoption$
+  $sep$,
+$endfor$
+]{$documentclass$}
 
 $if(fontfamily)$
   \usepackage{$fontfamily$}
