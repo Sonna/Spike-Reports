@@ -91,10 +91,10 @@ $(TARGET_DIRECTORY):
 	mkdir $(TARGET_DIRECTORY)
 
 $(HTML):	$(SRC)
-	$(COMPILER) $(PREFLAGS) -w html $(POSTFLAGS) --template=templates/html.template --css=/Users/Sonna/.pandoc/marked/kultiad-serif.css -o $@ $<
+	$(COMPILER) $(PREFLAGS) -w html $(POSTFLAGS) --template=templates/html.template --css=/Users/Sonna/.pandoc/marked/kultiad-serif.css -o $@ $^
 
 $(TEX) $(PDFS) $(DOCX):	$(SRC)
-	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $<
+	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $^
 
 clean:
 	rm $(DOCX) $(PDFS) $(HTML) $(TEX)
