@@ -71,15 +71,11 @@ POSTFLAGS = --smart \
 ## All markdown files in the source directory
 SRC = $(wildcard $(SOURCE_DIRECTORY)**/*.md)
 
-OUT_DIR = output
-SRC_FILENAME = $(notdir $(SRC))
-OUT = $(OUT_DIR)/$(SRC_FILENAME)
 
-
-DOCX=$(OUT:.md=.docx)
-PDFS=$(OUT:.md=.pdf)
-HTML=$(OUT:.md=.html)
-TEX=$(OUT:.md=.tex)
+DOCX = $(TARGET_DIRECTORY)/$(PROJECT_NAME).docx
+PDFS = $(TARGET_DIRECTORY)/$(PROJECT_NAME).pdf
+HTML = $(TARGET_DIRECTORY)/$(PROJECT_NAME).html
+TEX = $(TARGET_DIRECTORY)/$(PROJECT_NAME).tex
 
 
 all:  $(DOCX) $(PDFS) $(HTML) $(TEX)
@@ -89,23 +85,24 @@ pdf:	clean $(PDFS)
 html:	clean $(HTML)
 tex:	clean $(TEX)
 
-$(OUT_DIR):
-	mkdir $(OUT_DIR)
 
-$(OUT_DIR)/%.html:	$(IN_DIR)/%.md
+$(TARGET_DIRECTORY):
+	mkdir $(TARGET_DIRECTORY)
+
+$(HTML):	$(SRC)
 	$(COMPILER) $(PREFLAGS) -w html $(POSTFLAGS) --template=templates/html.template --css=/Users/Sonna/.pandoc/marked/kultiad-serif.css -o $@ $<
 
-$(OUT_DIR)/%.tex:	$(IN_DIR)/%.md
+$(TEX):	$(SRC)
 	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $<
 
-$(OUT_DIR)/%.pdf:	$(IN_DIR)/%.md
+$(PDFS):	$(SRC)
 	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $<
 
-$(OUT_DIR)/%.docx:	$(IN_DIR)/%.md
+$(DOCX):	$(SRC)
 	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $<
 
 clean:
-	rm -f $(OUT_DIR)/*.html \
-      $(OUT_DIR)/*.pdf \
-      $(OUT_DIR)/*.tex \
-      $(OUT_DIR)/*.docx
+	rm -f $(TARGET_DIRECTORY)/*.html \
+      $(TARGET_DIRECTORY)/*.pdf \
+      $(TARGET_DIRECTORY)/*.tex \
+      $(TARGET_DIRECTORY)/*.docx
