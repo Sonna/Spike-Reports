@@ -13,8 +13,7 @@
 ##  in your working directory. Make sure you do not have files in these
 ##  formats that you want to keep!
 
-## Compiler
-CC = pandoc
+COMPILER = pandoc
 
 ## Markdown extension (e.g. md, markdown, mdown).
 MEXT = md
@@ -70,16 +69,16 @@ $(OUT_DIR):
 	mkdir $(OUT_DIR)
 
 $(OUT_DIR)/%.html:	$(IN_DIR)/%.md
-	$(CC) -r $(MARKDOWN) -w html -S $(OPTIONS) --template=templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css -o $@ $<
+	$(COMPILER) -r $(MARKDOWN) -w html -S $(OPTIONS) --template=templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css -o $@ $<
 
 $(OUT_DIR)/%.tex:	$(IN_DIR)/%.md
-	$(CC) -r $(MARKDOWN) -w latex -s -S $(OPTIONS) -o $@ $<
+	$(COMPILER) -r $(MARKDOWN) -w latex -s -S $(OPTIONS) -o $@ $<
 
 $(OUT_DIR)/%.pdf:	$(IN_DIR)/%.md
-	$(CC) -r $(MARKDOWN) -s -S $(OPTIONS) -o $@ $<
+	$(COMPILER) -r $(MARKDOWN) -s -S $(OPTIONS) -o $@ $<
 
 $(OUT_DIR)/%.docx:	$(IN_DIR)/%.md
-	$(CC) -r $(MARKDOWN) -s -S $(OPTIONS) -o $@ $<
+	$(COMPILER) -r $(MARKDOWN) -s -S $(OPTIONS) -o $@ $<
 
 clean:
 	rm -f $(OUT_DIR)/*.html \
