@@ -53,8 +53,6 @@ OUT_DIR = output
 SRC_FILENAME = $(notdir $(SRC))
 OUT = $(OUT_DIR)/$(SRC_FILENAME)
 
-## Location of Pandoc support files.
-PREFIX = /Users/Sonna/.pandoc
 
 ## Location of your working bibliography file
 BIB = /Users/Sonna/Documents/bibs/References.bib
@@ -93,7 +91,7 @@ $(OUT_DIR):
 	mkdir $(OUT_DIR)
 
 $(OUT_DIR)/%.html:	$(IN_DIR)/%.md
-	$(COMPILER) $(PREFLAGS) -w html -S $(OPTIONS) --template=templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css -o $@ $<
+	$(COMPILER) $(PREFLAGS) -w html -S $(OPTIONS) --template=templates/html.template --css=/Users/Sonna/.pandoc/marked/kultiad-serif.css -o $@ $<
 
 $(OUT_DIR)/%.tex:	$(IN_DIR)/%.md
 	$(COMPILER) $(PREFLAGS) -w latex -s -S $(OPTIONS) -o $@ $<
