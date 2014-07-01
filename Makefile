@@ -37,7 +37,7 @@ BIB = /Users/Sonna/Documents/bibs/References.bib
 CSL = csl/harvard-swinburne-university-of-technology.csl
 
 ## LaTeX Template
-TEMPLATE = templates/pandoc_latex.template
+TEMPLATE = frontmatter/main.tex
 
 
 OPTIONS = --latex-engine=/usr/texbin/pdflatex \
