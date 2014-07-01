@@ -68,9 +68,8 @@ POSTFLAGS = --smart \
             --number-sections \
             --table-of-contents
 
-## All markdown files in the working directory
-IN_DIR = markdown
-SRC = $(wildcard $(IN_DIR)/*.md
+## All markdown files in the source directory
+SRC = $(wildcard $(SOURCE_DIRECTORY)**/*.md)
 
 OUT_DIR = output
 SRC_FILENAME = $(notdir $(SRC))
