@@ -5,5 +5,6 @@
 ---
 Title: Spike Reports
 Author: Alex Sonneveld
+classoption: twoside
 ...
 
