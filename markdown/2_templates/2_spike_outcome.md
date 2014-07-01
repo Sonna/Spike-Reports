@@ -1,10 +1,10 @@
-# Spike Outcome #
+## Spike Outcome
 
 **Spike:** Spike_No
 **Title:** Spike_Title
 **Author:** Alex Sonneveld, 7193475@student.swin.edu.au
 
-## Goals / Deliverables: ##
+### Goals / Deliverables:
 
 _#### Summarise from the spike plan goal_
 _#### Besides this report, what else was created ie UML, code, reports_
@@ -13,7 +13,7 @@ _#### Besides this report, what else was created ie UML, code, reports_
 - Short Report titled “IDE Comparison”
 - …
 
-## Technologies, Tools, and Resources used: ##
+### Technologies, Tools, and Resources used:
 
 _#### List of information needed by someone trying to reproduce this work_
 
@@ -26,12 +26,12 @@ _#### List of information needed by someone trying to reproduce this work_
     - Sublime Text 2
 - Word processor; Microsoft Word 2013
 
-## Tasks undertaken: ##
+### Tasks undertaken:
 
 #### List key tasks likely to help another developer
 - …
 
-## What we found out: ##
+### What we found out:
 
 #### Describe (sentences), + graphs/screenshots/outcomes as needed
 

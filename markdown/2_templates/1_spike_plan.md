@@ -1,9 +1,9 @@
 
-# Spike Plan #
+## Spike Plan
 
 **Name**:
 
-## Context: ##
+### Context:
 
 Outline the reason and context for the spike.
 
@@ -23,7 +23,7 @@ Example: The team is not familiar with the Firebird DBMS that has been chosen by
 - FSQL command line tool
 - FlameRobin GUI admin tool
 
-## Goals/Deliverables: ##
+### Goals/Deliverables:
 
 What are the goals and deliverables of this spike?
 Example:
@@ -35,7 +35,7 @@ Example:
 **Planned start date:**  Example: 13/08/2007
 **Deadline:**  Example: 20/08/2007
 
-## Planning notes: ##
+### Planning notes:
 
 Outline a proposed plan of how this spike can be undertaken.
 
