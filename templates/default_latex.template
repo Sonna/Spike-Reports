@@ -210,6 +210,8 @@ $if(title)$
   \maketitle
 $endif$
 
+%-----------------------------------
+% Adding the abstract
 $if(abstract)$
   \begin{abstract}
     $abstract$
