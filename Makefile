@@ -27,7 +27,7 @@ TARGET_DIRECTORY = output
 
 BIB = /Users/Sonna/Documents/bibs/References.bib
 CSL = csl/harvard-swinburne-university-of-technology.csl
-TEMPLATE = frontmatter/main.tex
+TEMPLATE = templates/default_latex.template
 
 COMPILER = pandoc
 
