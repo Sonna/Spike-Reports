@@ -102,7 +102,4 @@ $(DOCX):	$(SRC)
 	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $<
 
 clean:
-	rm -f $(TARGET_DIRECTORY)/*.html \
-      $(TARGET_DIRECTORY)/*.pdf \
-      $(TARGET_DIRECTORY)/*.tex \
-      $(TARGET_DIRECTORY)/*.docx
+	rm $(DOCX) $(PDFS) $(HTML) $(TEX)
