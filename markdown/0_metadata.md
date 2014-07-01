@@ -1,5 +1,5 @@
 ---
-Title: spike_reports
+Title: Spike Reports
 Author: Alex Sonneveld
 Base Heading Level: 1
 toc-depth: 3
