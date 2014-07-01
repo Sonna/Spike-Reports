@@ -25,7 +25,7 @@ abstract: This is a pandoc test . . .
 
 # Templates #
 
-## Spike Plan ##
+# Spike Plan #
 
 **Name**:
 
@@ -74,9 +74,8 @@ Example:
 - Create scripts to tear down database
 - Create batch/makefile/build script with two targets, one to construct and populate (setup) the database, and the other to tear down the database.
 
-## Spike Outcome ##
+# Spike Outcome #
 
------------------
 **Spike:** Spike_No
 **Title:** Spike_Title
 **Author:** Alex Sonneveld, 7193475@student.swin.edu.au
