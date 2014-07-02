@@ -223,6 +223,8 @@ $endfor$
 
 $if(title)$
   \maketitle
+  \clearpage
+  \input{templates/copyright}
 $endif$
 
 %-----------------------------------
