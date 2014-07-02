@@ -35,6 +35,7 @@ $endfor$
 % Sets Multi-column gutter spacing
 \setlength{\columnsep}{1cm}
 
+
 $if(fontfamily)$
   \usepackage{$fontfamily$}
 $else$
@@ -236,7 +237,6 @@ $endif$
 
 $for(include-before)$
   $include-before$
-
 $endfor$
 
 $if(toc)$
@@ -266,12 +266,10 @@ $endif$
 
 $if(biblatex)$
   \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-
 $endif$
 
 $for(include-after)$
   $include-after$
-
 $endfor$
 
 \end{document}
