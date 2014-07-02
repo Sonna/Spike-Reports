@@ -214,6 +214,9 @@ $for(header-includes)$
   $header-includes$
 $endfor$
 
+
+%-----------------------------------
+% Beginning Main Document
 \begin{document}
 
 $if(title)$
