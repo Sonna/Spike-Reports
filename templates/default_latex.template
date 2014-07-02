@@ -247,7 +247,11 @@ $if(toc)$
   }
 $endif$
 
+%-----------------------------------
+% Main "Body" of the document and
+% where all files are compiled to
 $body$
+
 
 $if(natbib)$
   $if(biblio-files)$
