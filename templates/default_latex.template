@@ -31,6 +31,10 @@ $endfor$
 \fancyfoot[LO,RE]{$author$}
 \fancyfoot[LE,RO]{\thepage}
 
+% -----------------------
+% Sets Multi-column gutter spacing
+\setlength{\columnsep}{1cm}
+
 $if(fontfamily)$
   \usepackage{$fontfamily$}
 $else$
