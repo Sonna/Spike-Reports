@@ -21,7 +21,6 @@ $endfor$
 % -----------------------
 % Using titlesec
 % Reference: http://superuser.com/questions/601469/getting-chapters-to-start-on-a-new-page-in-a-pandoc-generated-pdf
-\usepackage{titlesec}
 \newcommand{\sectionbreak}{\clearpage}
 
 % -----------------------
