@@ -194,6 +194,9 @@ $if(lang)$
   \fi
 $endif$
 
+
+%-----------------------------------
+% Title Page
 $if(title)$
   \title{$title$}
 $endif$
