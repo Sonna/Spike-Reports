@@ -28,7 +28,7 @@ $endfor$
 \pagestyle{fancy}
 \fancyhead[CO,CE]{$header$}
 \fancyfoot[CO,CE]{$footer$}
-\fancyfoot[LO,RE]{Alex Sonneveld 7193475}
+\fancyfoot[LO,RE]{$author$}
 \fancyfoot[LE,RO]{\thepage}
 
 $if(fontfamily)$
