@@ -13,34 +13,74 @@
 ##  in your working directory. Make sure you do not have files in these
 ##  formats that you want to keep!
 
-## Markdown extension (e.g. md, markdown, mdown).
-MEXT = md
+## Requires:
+##   - Location of source files to convert
+##   - Location of source files to convert
+##   - Location of your working bibliography file
+##   - Location of Citation Style Language (CSL) stylesheet
+##   - Location of default LaTeX Template
+##
+PROJECT_NAME = spikes
 
-## Pandoc extensions
-MARKDOWN = markdown+multiline_tables+grid_tables+table_captions+yaml_metadata_block+definition_lists+raw_tex+footnotes+citations
+SOURCE_DIRECTORY = markdown
+TARGET_DIRECTORY = output
 
-## All markdown files in the working directory
-IN_DIR = markdown
-SRC = $(wildcard $(IN_DIR)/*.$(MEXT))
-
-OUT_DIR = output
-SRC_FILENAME = $(notdir $(SRC))
-OUT = $(OUT_DIR)/$(SRC_FILENAME)
-
-## Location of Pandoc support files.
-PREFIX = /Users/Sonna/.pandoc
-
-## Location of your working bibliography file
 BIB = /Users/Sonna/Documents/bibs/References.bib
+CSL = csl/harvard-swinburne-university-of-technology.csl
+# TEMPLATE = templates/main.tex
+TEMPLATE = templates/default_latex.template
 
-## CSL stylesheet (located in the csl folder of the PREFIX directory).
-CSL = apsa
+COMPILER = pandoc
+
+PANDOC_EXTENSIONS = markdown \
+                    multiline_tables \
+                    grid_tables \
+                    table_captions \
+                    pandoc_title_block \
+                    yaml_metadata_block \
+                    definition_lists \
+                    raw_tex \
+                    footnotes \
+                    citations
+
+# Substring from array method. This methods finds the spaces between words
+# and then subsitutes them with a new value, often commas between words.
+#
+#   e.g.
+#
+#     word1 word2 word3 -> word1, word2, word3
+#
+# Reference:
+# - http://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_8.html
+plus:=+
+empty:=
+space:= $(empty) $(empty)
+extensions:= $(subst $(space),$(plus),$(PANDOC_EXTENSIONS))
 
 
-DOCX=$(OUT:.md=.docx)
-PDFS=$(OUT:.md=.pdf)
-HTML=$(OUT:.md=.html)
-TEX=$(OUT:.md=.tex)
+PREFLAGS = -r $(extensions)
+
+POSTFLAGS = --standalone \
+            --smart \
+            --latex-engine=/usr/texbin/pdflatex \
+            --template=$(TEMPLATE) \
+            --filter pandoc-citeproc \
+            --csl=$(CSL) \
+            --bibliography=$(BIB) \
+            --mathjax \
+            --number-sections \
+            --table-of-contents
+
+## All markdown files in the source directory
+# SRC = $(wildcard $(SOURCE_DIRECTORY)**/*.md)
+SRC := $(shell find $(SOURCE_DIRECTORY) -name "*.md")
+
+FILENAME = $(TARGET_DIRECTORY)/$(PROJECT_NAME)
+
+DOCX = $(FILENAME:=.docx)
+PDFS = $(FILENAME:=.pdf)
+HTML = $(FILENAME:=.html)
+TEX  = $(FILENAME:=.tex)
 
 
 all:  $(DOCX) $(PDFS) $(HTML) $(TEX)
@@ -50,20 +90,15 @@ pdf:	clean $(PDFS)
 html:	clean $(HTML)
 tex:	clean $(TEX)
 
-$(OUT_DIR)/%.html:	$(IN_DIR)/%.md
-	pandoc -r $(MARKDOWN) -w html -S --template=$(PREFIX)/templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css --filter pandoc-citeproc --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
 
-$(OUT_DIR)/%.tex:	$(IN_DIR)/%.md
-	pandoc -r $(MARKDOWN) -w latex -s -S --latex-engine=/usr/texbin/pdflatex --filter pandoc-citeproc --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
+$(TARGET_DIRECTORY):
+	mkdir $(TARGET_DIRECTORY)
 
-$(OUT_DIR)/%.pdf:	$(IN_DIR)/%.md
-	pandoc -r $(MARKDOWN) -s -S --latex-engine=/usr/texbin/pdflatex --filter pandoc-citeproc --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
+$(HTML):	$(SRC)
+	$(COMPILER) $(PREFLAGS) -w html $(POSTFLAGS) --template=templates/html.template --css=/Users/Sonna/.pandoc/marked/kultiad-serif.css -o $@ $^
 
-$(OUT_DIR)/%.docx:	$(IN_DIR)/%.md
-	pandoc -r $(MARKDOWN) -s -S --latex-engine=/usr/texbin/pdflatex --filter pandoc-citeproc --bibliography=$(BIB) --mathjax --number-sections -o $@ $<
+$(TEX) $(PDFS) $(DOCX):	$(SRC)
+	$(COMPILER) $(PREFLAGS) $(POSTFLAGS) -o $@ $^
 
 clean:
-	rm -f $(OUT_DIR)/*.html \
-      $(OUT_DIR)/*.pdf \
-      $(OUT_DIR)/*.tex \
-      $(OUT_DIR)/*.docx
+	rm $(DOCX) $(PDFS) $(HTML) $(TEX)
