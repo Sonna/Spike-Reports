@@ -22,6 +22,7 @@ $endfor$
 % Using titlesec
 % Reference: http://superuser.com/questions/601469/getting-chapters-to-start-on-a-new-page-in-a-pandoc-generated-pdf
 \newcommand{\sectionbreak}{\clearpage}
+\input{templates/blank}
 
 % -----------------------
 % Using fancy headers and footers
