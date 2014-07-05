@@ -242,6 +242,7 @@ $endif$
 % Adding the abstract
 $if(abstract)$
   \begin{abstract}
+    \addcontentsline{toc}{chapter}{\numberline{}Abstract}%
     $abstract$
   \end{abstract}
 $endif$
