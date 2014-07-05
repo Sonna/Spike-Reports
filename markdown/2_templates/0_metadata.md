@@ -5,4 +5,3 @@ Author: Alex Sonneveld
 
 \part{Templates}
 
-

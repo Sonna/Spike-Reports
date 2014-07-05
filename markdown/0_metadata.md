@@ -6,8 +6,11 @@
 Title: Spike Reports
 Author: Alex Sonneveld
 fontsize: 11pt
-documentclass: article
+documentclass: report
 geometry: margin=1in
-classoption: twoside
+classoption: twoside, openright, titlepage
+abstract: This is an abstract
 ...
+
+\part{Reports}
 
