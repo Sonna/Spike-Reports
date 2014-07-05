@@ -39,7 +39,6 @@ PANDOC_EXTENSIONS = markdown \
                     pandoc_title_block \
                     yaml_metadata_block \
                     definition_lists \
-                    raw_tex \
                     footnotes \
                     citations
 
