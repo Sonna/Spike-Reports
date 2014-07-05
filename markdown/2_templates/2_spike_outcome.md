@@ -35,13 +35,15 @@ _### List of information needed by someone trying to reproduce this work_
 
 _### Describe (sentences), + graphs/screenshots/outcomes as needed_
 
-## Open issues/risks _[Optional – remove heading/section if not used!]_: ###
+## Open issues/risks
+_[Optional – remove heading/section if not used!]_
 
 _### List out the issues and risks that you have been unable to resolve at the end of the spike. You may have uncovered a whole range of new risks as well. Make notes to help the team manage and respond._
 
 - e.g. Risk xyz (new)
 
-## Recommendations _[Optional – remove heading/section if not used!]_: ###
+## Recommendations
+_[Optional – remove heading/section if not used!]_
 
 _## Often based on any open issues/risks Identified. You may state that another spike is required for the team to resolve new issues identified (or) indicate that this spike has increased the teams confidence in XYZ and should move on._
 
