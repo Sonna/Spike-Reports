@@ -28,6 +28,8 @@ $endfor$
 % Using fancy headers and footers
 \pagestyle{fancy}
 \fancyheadoffset{0cm}
+\fancyhead[LE,RO]{\slshape \rightmark}
+\fancyhead[LO,RE]{\slshape \leftmark}
 \fancyhead[CO,CE]{$header$}
 \fancyfoot[CO,CE]{$footer$}
 \fancyfoot[LO,RE]{$author$}
