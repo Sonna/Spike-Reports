@@ -221,6 +221,9 @@ $endfor$
 % Beginning Main Document
 \begin{document}
 
+% Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+% \frontmatter
+
 $if(title)$
   \maketitle
   \clearpage
@@ -249,6 +252,8 @@ $if(toc)$
   }
 $endif$
 
+% \mainmatter
+
 %-----------------------------------
 % Main "Body" of the document and
 % where all files are compiled to
@@ -269,6 +274,8 @@ $if(natbib)$
 
   $endif$
 $endif$
+
+% \backmatter
 
 $if(biblatex)$
   \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
