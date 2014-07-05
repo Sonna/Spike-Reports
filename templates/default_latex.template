@@ -19,6 +19,8 @@ $endfor$
 \input{templates/packages}
 \input{templates/titlesec}
 \input{templates/blank}
+\input{templates/chapter_headings}
+
 
 % -----------------------
 % Using fancy headers and footers
