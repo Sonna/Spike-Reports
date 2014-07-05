@@ -1,4 +1,4 @@
-# Spike
+# What is a Spike?
 
 > A Spike is an agile software engineering practice used to overcome some gap 
 > in knowledge or skills. In these cases it is difficult to build a plan or 
