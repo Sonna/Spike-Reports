@@ -7,6 +7,7 @@ Title: Spike Reports
 Author: Alex Sonneveld
 fontsize: 11pt
 documentclass: article
+geometry: margin=1in
 classoption: twoside
 ...
 
