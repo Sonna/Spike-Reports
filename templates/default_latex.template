@@ -264,6 +264,9 @@ $endif$
 % \addcontentsline{toc}{chapter}{\numberline{}List of Figures}%
 % \listoffigures
 
+% \addcontentsline{toc}{chapter}{\numberline{}List of Tables}%
+% \listoftables
+
 % \mainmatter
 \pagenumbering{arabic}
 
