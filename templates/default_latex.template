@@ -261,6 +261,9 @@ $if(toc)$
   }
 $endif$
 
+% \addcontentsline{toc}{chapter}{\numberline{}List of Figures}%
+% \listoffigures
+
 % \mainmatter
 \pagenumbering{arabic}
 
