@@ -1,0 +1,8 @@
+  % define lightgray
+  \definecolor{lightgray}{gray}{0.95}
+
+  % alternate rowcolors for all long-tables
+  \let\oldlongtable\longtable
+  \let\endoldlongtable\endlongtable
+  \renewenvironment{longtable}{\rowcolors{2}{lightgray}{white}\oldlongtable} {
+  \endoldlongtable}
